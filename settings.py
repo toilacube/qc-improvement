@@ -36,7 +36,7 @@ class Settings():
     )
 
     # Chat Provider settings
-    CHAT_PROVIDER: str = os.getenv("CHAT_PROVIDER", "openai")
+    CHAT_PROVIDER: str = os.getenv("CHAT_PROVIDER", "gemini")
 
     # Embeddings settings
     EMBEDDINGS_PROVIDER: str = os.getenv("EMBEDDINGS_PROVIDER", "openai")
@@ -82,8 +82,12 @@ class Settings():
         "OLLAMA_EMBEDDINGS_MODEL", "nomic-embed-text"
     )  # Added this line
 
+    GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-1.5-pro")
+    GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "your-gemini-api-key-here")
     class Config:
         env_file = ".env"
 
 
 settings = Settings()
+
+print(settings.CHAT_PROVIDER)

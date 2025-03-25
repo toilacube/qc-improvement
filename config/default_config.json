@@ -5,6 +5,5 @@
     "Use standardized templates for clarity and consistency.",
     "Include a Priority column to categorize test cases."
   ],
-  "additional_sections": [
-  ]
+  "additional_sections": []
 }

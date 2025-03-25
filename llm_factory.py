@@ -3,7 +3,7 @@ from langchain_core.language_models import BaseChatModel
 from langchain_openai import ChatOpenAI
 from langchain_ollama import OllamaLLM
 from settings import settings
-
+from langchain_google_genai import ChatGoogleGenerativeAI
 '''
 - Input: Requirements
 - Ouput: Test case scenarios:
@@ -25,6 +25,7 @@ class LLMFactory:
         """
         # If no provider specified, use the one from settings
         provider = provider or settings.CHAT_PROVIDER
+        print(f"Creating LLM with provider: {provider}")
 
         if provider.lower() == "openai":
             return ChatOpenAI(
@@ -41,6 +42,14 @@ class LLMFactory:
                 base_url=settings.OLLAMA_API_BASE,
                 temperature=temperature,
                 streaming=streaming
+            )
+        elif provider.lower() == "gemini":
+            # Initialize Ollama model
+            return ChatGoogleGenerativeAI(
+                temperature=temperature,
+                streaming=streaming,
+                model=settings.GEMINI_MODEL,
+                google_api_key=settings.GEMINI_API_KEY,
             )
         # Add more providers here as needed
         # elif provider.lower() == "anthropic":

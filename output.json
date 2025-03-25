@@ -1,0 +1,280 @@
+{
+    "response": {
+      "user_stories": [
+        {
+          "title": "User Login with Valid Credentials",
+          "description": "The system should allow a user to successfully log in with valid username and password.",
+          "test_cases": [
+            {
+              "id": "AP-P4-01",
+              "scenario_name": "Verify Successful Login",
+              "testing_type": "Functional",
+              "system": "Authentication",
+              "menu": "Login",
+              "progress": "Ready",
+              "priority": "High",
+              "steps_to_execute": [
+                "1. Navigate to the login page.",
+                "2. Enter a valid username.",
+                "3. Enter a valid password.",
+                "4. Click the 'Login' button."
+              ],
+              "data_test": {
+                "username": "validuser",
+                "password": "validpassword"
+              },
+              "expected_result": "User is successfully logged in and redirected to the dashboard."
+            },
+            {
+              "id": "AP-P5-01",
+              "scenario_name": "Verify Core Login Functionality",
+              "testing_type": "Smoke",
+              "system": "Authentication",
+              "menu": "Login",
+              "progress": "Ready",
+              "priority": "High",
+              "steps_to_execute": [
+                "1. Launch the application.",
+                "2. Enter valid login credentials.",
+                "3. Submit login form."
+              ],
+              "data_test": {
+                "username": "validuser",
+                "password": "validpassword"
+              },
+              "expected_result": "User successfully logs in and the main application page loads."
+            },
+            {
+              "id": "AP-P6-01",
+              "scenario_name": "Verify Login Performance under Load",
+              "testing_type": "Performance",
+              "system": "Authentication",
+              "menu": "Login",
+              "progress": "Ready",
+              "priority": "Medium",
+              "steps_to_execute": [
+                "1. Use a performance testing tool (e.g., JMeter).",
+                "2. Simulate 100 concurrent users logging in.",
+                "3. Monitor response times."
+              ],
+              "data_test": {},
+              "expected_result": "Average login time is less than 3 seconds with no errors."
+            },
+            {
+              "id": "AP-P7-01",
+              "scenario_name": "Verify Protection against Brute-force attacks",
+              "testing_type": "Security",
+              "system": "Authentication",
+              "menu": "Login",
+              "progress": "Ready",
+              "priority": "High",
+              "steps_to_execute": [
+                "1. Attempt multiple failed login attempts with incorrect credentials (e.g., 5 attempts).",
+                "2. Observe the system's behavior after exceeding the allowed attempts."
+              ],
+              "data_test": {
+                "username": "invaliduser",
+                "password": "invalidpassword"
+              },
+              "expected_result": "The system locks the account or implements a delay after a certain number of failed attempts to prevent brute-force attacks."
+            },
+            {
+              "id": "AP-P8-01",
+              "scenario_name": "Verify Navigation after Successful Login",
+              "testing_type": "System",
+              "system": "Authentication",
+              "menu": "Login",
+              "progress": "Ready",
+              "priority": "High",
+              "steps_to_execute": [
+                "1. Log in with valid credentials.",
+                "2. Verify redirection to the dashboard."
+              ],
+              "data_test": {
+                "username": "validuser",
+                "password": "validpassword"
+              },
+              "expected_result": "The user is successfully logged in and redirected to the dashboard."
+            }
+          ]
+        },
+        {
+          "title": "User Login with Invalid Credentials",
+          "description": "The system should display an appropriate error message when a user attempts to log in with invalid username and/or password.",
+          "test_cases": [
+            {
+              "id": "AP-P4-02",
+              "scenario_name": "Verify Error Message for Invalid Credentials",
+              "testing_type": "Functional",
+              "system": "Authentication",
+              "menu": "Login",
+              "progress": "Ready",
+              "priority": "High",
+              "steps_to_execute": [
+                "1. Navigate to the login page.",
+                "2. Enter an invalid username.",
+                "3. Enter an invalid password.",
+                "4. Click the 'Login' button."
+              ],
+              "data_test": {
+                "username": "invaliduser",
+                "password": "invalidpassword"
+              },
+              "expected_result": "An error message indicating invalid credentials is displayed."
+            },
+            {
+              "id": "AP-P7-02",
+              "scenario_name": "Verify Protection against SQL Injection (Login)",
+              "testing_type": "Security",
+              "system": "Authentication",
+              "menu": "Login",
+              "progress": "Ready",
+              "priority": "High",
+              "steps_to_execute": [
+                "1. Enter a SQL injection attempt in the username field (e.g., ' OR '1'='1).",
+                "2. Enter any password.",
+                "3. Submit the login form."
+              ],
+              "data_test": {
+                "username": "' OR '1'='1",
+                "password": "anypassword"
+              },
+              "expected_result": "The system does not allow the SQL injection and displays an appropriate error message, preventing unauthorized access."
+            }
+          ]
+        },
+        {
+          "title": "Password Reset Functionality",
+          "description": "The system should allow a user to reset their password.",
+          "test_cases": [
+            {
+              "id": "AP-P4-03",
+              "scenario_name": "Verify Password Reset Request",
+              "testing_type": "Functional",
+              "system": "Authentication",
+              "menu": "Password Reset",
+              "progress": "Ready",
+              "priority": "High",
+              "steps_to_execute": [
+                "1. Navigate to the password reset page.",
+                "2. Enter a valid email address associated with an account.",
+                "3. Submit the request."
+              ],
+              "data_test": {
+                "mobile_email": "validuser@example.com"
+              },
+              "expected_result": "An email with instructions to reset the password is sent to the provided email address."
+            },
+            {
+              "id": "AP-P4-04",
+              "scenario_name": "Verify Password Reset with Invalid Email",
+              "testing_type": "Functional",
+              "system": "Authentication",
+              "menu": "Password Reset",
+              "progress": "Ready",
+              "priority": "Medium",
+              "steps_to_execute": [
+                "1. Navigate to the password reset page.",
+                "2. Enter an invalid email address.",
+                "3. Submit the request."
+              ],
+              "data_test": {
+                "mobile_email": "invalidemail@example.com"
+              },
+              "expected_result": "An error message is displayed indicating that the email address is not found."
+            },
+            {
+              "id": "AP-P7-03",
+              "scenario_name": "Verify Protection against Email Injection",
+              "testing_type": "Security",
+              "system": "Authentication",
+              "menu": "Password Reset",
+              "progress": "Ready",
+              "priority": "High",
+              "steps_to_execute": [
+                "1. Enter an email address that attempts email injection (e.g., test@example.com;attacker@example.com).",
+                "2. Submit the reset request."
+              ],
+              "data_test": {
+                "mobile_email": "test@example.com;attacker@example.com"
+              },
+              "expected_result": "The system does not allow email injection and sends the reset email only to the intended recipient (test@example.com), not to the attacker's address."
+            }
+          ]
+        },
+        {
+          "title": "OTP based Login",
+          "description": "The system should allow a user to login based on OTP",
+          "test_cases": [
+            {
+              "id": "AP-P4-05",
+              "scenario_name": "Verify OTP Login with Valid OTP",
+              "testing_type": "Functional",
+              "system": "Authentication",
+              "menu": "OTP Login",
+              "progress": "Ready",
+              "priority": "High",
+              "steps_to_execute": [
+                "1. Navigate to OTP login page.",
+                "2. Enter a registered mobile/email.",
+                "3. Enter a valid OTP.",
+                "4. Submit the form"
+              ],
+              "data_test": {
+                "mobile_email": "validuser@example.com",
+                "otp": "123456"
+              },
+              "expected_result": "User is successfully logged in and redirected to the dashboard."
+            },
+            {
+              "id": "AP-P4-06",
+              "scenario_name": "Verify OTP Login with InValid OTP",
+              "testing_type": "Functional",
+              "system": "Authentication",
+              "menu": "OTP Login",
+              "progress": "Ready",
+              "priority": "High",
+              "steps_to_execute": [
+                "1. Navigate to OTP login page.",
+                "2. Enter a registered mobile/email.",
+                "3. Enter an invalid OTP.",
+                "4. Submit the form"
+              ],
+              "data_test": {
+                "mobile_email": "validuser@example.com",
+                "otp": "654321"
+              },
+              "expected_result": "An error message indicating invalid OTP is displayed."
+            },
+            {
+              "id": "AP-P4-07",
+              "scenario_name": "Verify OTP Login with InValid Mobile/Email",
+              "testing_type": "Functional",
+              "system": "Authentication",
+              "menu": "OTP Login",
+              "progress": "Ready",
+              "priority": "High",
+              "steps_to_execute": [
+                "1. Navigate to OTP login page.",
+                "2. Enter an invalid mobile/email.",
+                "3. Enter a valid OTP.",
+                "4. Submit the form"
+              ],
+              "data_test": {
+                "mobile_email": "invaliduser@example.com",
+                "otp": "123456"
+              },
+              "expected_result": "An error message indicating invalid email/mobile is displayed."
+            }
+          ]
+        }
+      ],
+      "key_considerations": [
+        "Ensure all error messages are user-friendly and provide clear guidance.",
+        "Test all authentication methods thoroughly, including edge cases.",
+        "Prioritize security testing to prevent unauthorized access and data breaches.",
+        "Verify the application's behavior across different browsers and devices.",
+        "Regularly update and maintain test cases as the application evolves."
+      ]
+    }
+  }
