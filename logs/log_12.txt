@@ -1,0 +1,314 @@
+ SystemMessage 
+You are an AI agent designed to automate browser tasks. Your goal is to accomplish the ultimate task following the rules.
+
+# Input Format
+Task
+Previous steps
+Current URL
+Open Tabs
+Interactive Elements
+[index]<type>text</type>
+- index: Numeric identifier for interaction
+- type: HTML element type (button, input, etc.)
+- text: Element description
+Example:
+[33]<button>Submit Form</button>
+
+- Only elements with numeric indexes in [] are interactive
+- elements without [] provide only context
+
+# Response Rules
+1. RESPONSE FORMAT: You must ALWAYS respond with valid JSON in this exact format:
+{"current_state": {"evaluation_previous_goal": "Success|Failed|Unknown - Analyze the current elements and the image to check if the previous goals/actions are successful like intended by the task. Mention if something unexpected happened. Shortly state why/why not",
+"memory": "Description of what has been done and what you need to remember. Be very specific. Count here ALWAYS how many times you have done something and how many remain. E.g. 0 out of 10 websites analyzed. Continue with abc and xyz",
+"next_goal": "What needs to be done with the next immediate action"},
+"action":[{"one_action_name": {// action-specific parameter}}, // ... more actions in sequence]}
+
+2. ACTIONS: You can specify multiple actions in the list to be executed in sequence. But always specify only one action name per item. Use maximum {max_actions} actions per sequence.
+Common action sequences:
+- Form filling: [{"input_text": {"index": 1, "text": "username"}}, {"input_text": {"index": 2, "text": "password"}}, {"click_element": {"index": 3}}]
+- Navigation and extraction: [{"go_to_url": {"url": "https://example.com"}}, {"extract_content": {"goal": "extract the names"}}]
+- Actions are executed in the given order
+- If the page changes after an action, the sequence is interrupted and you get the new state.
+- Only provide the action sequence until an action which changes the page state significantly.
+- Try to be efficient, e.g. fill forms at once, or chain actions where nothing changes on the page
+- only use multiple actions if it makes sense.
+
+3. ELEMENT INTERACTION:
+- Only use indexes of the interactive elements
+- Elements marked with "[]Non-interactive text" are non-interactive
+
+4. NAVIGATION & ERROR HANDLING:
+- If no suitable elements exist, use other functions to complete the task
+- If stuck, try alternative approaches - like going back to a previous page, new search, new tab etc.
+- Handle popups/cookies by accepting or closing them
+- Use scroll to find elements you are looking for
+- If you want to research something, open a new tab instead of using the current tab
+- If captcha pops up, try to solve it - else try a different approach
+- If the page is not fully loaded, use wait action
+
+5. TASK COMPLETION:
+- Use the done action as the last action as soon as the ultimate task is complete
+- Dont use "done" before you are done with everything the user asked you, except you reach the last step of max_steps. 
+- If you reach your last step, use the done action even if the task is not fully finished. Provide all the information you have gathered so far. If the ultimate task is completly finished set success to true. If not everything the user asked for is completed set success in done to false!
+- If you have to do something repeatedly for example the task says for "each", or "for all", or "x times", count always inside "memory" how many times you have done it and how many remain. Don't stop until you have completed like the task asked you. Only call done after the last step.
+- Don't hallucinate actions
+- Make sure you include everything you found out for the ultimate task in the done text parameter. Do not just say you are done, but include the requested information of the task. 
+
+6. VISUAL CONTEXT:
+- When an image is provided, use it to understand the page layout
+- Bounding boxes with labels on their top right corner correspond to element indexes
+
+7. Form filling:
+- If you fill an input field and your action sequence is interrupted, most often something changed e.g. suggestions popped up under the field.
+
+8. Long tasks:
+- Keep track of the status and subresults in the memory. 
+
+9. Extraction:
+- If your task is to find information - call extract_content on the specific pages to get and store the information.
+Your responses must be always JSON with the specified format.
+
+ HumanMessage 
+Your ultimate task is: """
+Important Considerations:
+✅ Ensure elements are fully loaded before interacting.
+✅ Maintain the hover state for a few seconds before proceeding.
+✅ Avoid clicking while hovering.
+✅ Do not extract all the text from the page; only extract the required text to save token
+open the stock info URL: https://company.lottechilsung.co.kr/kor/invest/stockinfo/list.do
+Steps:
+Extract the following data:
+현재가격 (Current Price): Extract only the numeric value (remove text and hidden elements).
+전일대비 (Change from Previous Day): Extract only the numeric value (remove text and hidden elements).
+2️⃣
+open the main page URL: https://company.lottechilsung.co.kr/kor/main/index.do
+Steps:
+Extract the stock price displayed under:
+롯데칠성음료 보통주 (Lotte Chilsung Beverage Common Stock).
+Extract text 하락" (Decline).
+
+3️⃣ Compare and Log the Results
+Get the current date and time as a string.
+Append an empty line to the log file:
+
+append_log("
+")
+Log the start time:
+
+append_log("Start log: " + str(current_date_time))
+📌 Compare "현재가격" (Current Price)
+If they match:
+
+append_log("Match! 현재가격 (Current Price) matches 롯데칠성음료 보통주 (Lotte Chilsung Beverage Common Stock): " + str(current_price))
+If they don’t match:
+
+append_log("Mismatch! 현재가격 (Current Price) from Stock Info Page: " + str(current_price) +  
+           " vs 롯데칠성음료 보통주 (Lotte Chilsung Beverage Common Stock) from Main Page: " + str(main_page_price))
+📌 Compare "전일대비" (Change from Previous Day)
+If they match:
+
+append_log("Match! 전일대비 (Change from Previous Day) matches hiddenTxt 하락 (Decline): " + str(change_from_previous_day))
+If they don’t match:
+
+append_log("Mismatch! 전일대비 (Change from Previous Day) from Stock Info Page: " + str(change_from_previous_day) +  
+           " vs hiddenTxt 하락 (Decline) from Main Page: " + str(main_page_change))
+""". If you achieved your ultimate task, stop everything and use the done action in the next step to complete the task. If not, continue as usual.
+
+ HumanMessage 
+Example output:
+
+ AIMessage 
+
+
+ ToolMessage 
+Browser started
+
+ HumanMessage 
+[Your task history memory starts here]
+
+ AIMessage 
+
+
+ ToolMessage 
+
+
+ HumanMessage 
+Action result: 🔗  Navigated to https://company.lottechilsung.co.kr/kor/invest/stockinfo/list.do
+
+ AIMessage 
+
+
+ ToolMessage 
+
+
+ HumanMessage 
+Action result: 🔗  Navigated to https://company.lottechilsung.co.kr/kor/main/index.do
+
+ AIMessage 
+
+
+ ToolMessage 
+
+
+ HumanMessage 
+Action result: 🔍  Scrolled down the page by 1000 pixels
+
+ AIMessage 
+
+
+ ToolMessage 
+
+
+ HumanMessage 
+Action result: 🔍  Scrolled down the page by 1000 pixels
+
+ AIMessage 
+
+
+ ToolMessage 
+
+
+ HumanMessage 
+Action result: 🔍  Scrolled down the page by 1000 pixels
+
+ AIMessage 
+
+
+ ToolMessage 
+
+
+ HumanMessage 
+Action result: 🔍  Scrolled down the page by 1000 pixels
+
+ AIMessage 
+
+
+ ToolMessage 
+
+
+ HumanMessage 
+Action result: 🔍  Scrolled down the page by 1000 pixels
+
+ AIMessage 
+
+
+ ToolMessage 
+
+
+ HumanMessage 
+Action result: 🔍  Scrolled down the page by 1000 pixels
+
+ AIMessage 
+
+
+ ToolMessage 
+
+
+ HumanMessage 
+Action result: 🔍  Scrolled down the page by 1000 pixels
+
+ AIMessage 
+
+
+ ToolMessage 
+
+
+ HumanMessage 
+Action result: Text '롯데칠성음료 보통주' not found or not visible on page
+
+ HumanMessage 
+[Task history memory ends]
+[Current state starts here]
+The following is one-time information - if you need to remember it write it to memory:
+Current url: https://company.lottechilsung.co.kr/kor/main/index.do
+Available tabs:
+[TabInfo(page_id=0, url='https://company.lottechilsung.co.kr/kor/main/index.do', title='롯데칠성음료')]
+Interactive elements from top layer of the current page inside the viewport:
+... 5081 pixels above - scroll or extract content to see more ...
+[0]<a 본문바로가기/>
+[1]<span Go to slide 1;button/>
+[2]<span Go to slide 2;button/>
+[3]<span Go to slide 3;button/>
+선배들의 이야기
+칠성사이다처럼 변함없는 사람
+2021년 입사
+재경  법인회계팀
+조소현
+[4]<a 자세히보기/>
+[5]<img />
+선배들의 이야기
+글로벌 기업 롯데칠성의 역군
+2022년 입사
+전략기획부문  해외사업팀
+조원호
+[6]<a 자세히보기/>
+[7]<img />
+선배들의 이야기
+롯데칠성과 함께 성장하는 '나'
+2022년 입사
+CM2팀  주스생수담당
+김도현
+[8]<a 자세히보기/>
+[9]<img />
+[10]<a 인재상/>
+[11]<a 인사/교육제도/>
+[12]<a 복리후생/>
+[13]<a 직무소개/>
+여러분의 아이디어가 실현되는
+오픈이노베이션에 참여하세요!
+누구나 참여할 수 있는 오픈이노베이션을 통해
+다양한 아이디어를 발굴하는
+열린 혁신을 추구합니다.
+[14]<a 자세히보기/>
+[15]<img />
+[16]<img />
+[17]<a 이용약관/>
+[18]<a 개인정보처리방침/>
+[19]<a 고정형 영상정보처리기기 운영방침/>
+[20]<a 새창>롯데칠성몰/>
+[21]<a 신문고/>
+[22]<a 사이트맵/>
+[23]<a 롯데칠성SNS/>
+서울특별시 송파구 올림픽로 269 롯데캐슬골드 5층
+TEL : 02-3479-9114
+FAX : 02-536-9767
+대표이사 : 박윤기
+Copyright © 2018 LOTTE CHILSUNG BEVERAGE CO.,LTD.
+ALL RIGHTS RESERVED
+[24]<a KISA 정보보호 및 개인정보보호관리체계 인증 ISMS-P 인증서 발급현황 바로가기>[인증범위]
+롯데칠성음료 (대표 홈페이지, OOS)운영 시스템
+[유효기간]
+2023.08.16 ~ 2026.08.15/>
+FAMILY SITE
+GO
+[25]<a />
+[26]<img />
+[27]<a />
+[28]<img />
+[29]<a />
+[30]<img />
+[31]<img />
+[32]<img />
+[33]<a />
+[34]<img />
+[35]<button />
+[36]<a TOP/>
+[End of page]
+Current step: 11/100Current date and time: 2025-03-21 15:14
+
+ RESPONSE
+{
+  "current_state": {
+    "evaluation_previous_goal": "Unknown - Attempting to extract stock price and decline text.",
+    "memory": "Current URL is the main page. Need to find and extract the stock price for \ub86f\ub370\uce60\uc131\uc74c\ub8cc \ubcf4\ud1b5\uc8fc and \ud558\ub77d (Decline) text. Current step is 11/100.",
+    "next_goal": "Try extracting content from the page."
+  },
+  "action": [
+    {
+      "extract_content": {
+        "goal": "Get the stock price for \ub86f\ub370\uce60\uc131\uc74c\ub8cc \ubcf4\ud1b5\uc8fc and \ud558\ub77d (Decline) text."
+      }
+    }
+  ]
+}
