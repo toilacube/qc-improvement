@@ -1,0 +1,190 @@
+{
+  "type": "json_schema",
+  "json_schema": {
+    "name": "test_case_response",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "user_stories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "test_cases": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "scenario_name": {
+                      "type": "string"
+                    },
+                    "testing_type": {
+                      "type": "string"
+                    },
+                    "system": {
+                      "type": "string"
+                    },
+                    "menu": {
+                      "type": "string"
+                    },
+                    "progress": {
+                      "type": "string"
+                    },
+                    "priority": {
+                      "type": "string"
+                    },
+                    "steps_to_execute": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "data_test": {
+                      "type": "object",
+                      "properties": {
+                        "username": {
+                          "type": "string"
+                        },
+                        "password": {
+                          "type": "string"
+                        },
+                        "mobile_email": {
+                          "type": "string"
+                        },
+                        "otp": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "username",
+                        "password",
+                        "mobile_email",
+                        "otp"
+                      ]
+                    },
+                    "expected_result": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "scenario_name",
+                    "testing_type",
+                    "system",
+                    "menu",
+                    "progress",
+                    "priority",
+                    "steps_to_execute",
+                    "data_test",
+                    "expected_result"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": ["title", "description", "test_cases"]
+          }
+        },
+        "test_case_properties": {
+          "type": "array",
+          "description": "Table representation of test case properties",
+          "items": {
+            "type": "object",
+            "properties": {
+              "column_id": {
+                "type": "string",
+                "description": "Unique identifier for property lookup (e.g., response.getValueOf[column_id])"
+              },
+              "column_name": {
+                "type": "string",
+                "description": "Human-readable column name"
+              },
+              "data_type": {
+                "type": "string",
+                "description": "Data type of the property"
+              }
+            },
+            "additionalProperties": false,
+            "required": ["column_id", "column_name", "data_type"]
+          },
+          "example": [
+            {
+              "column_id": "id",
+              "column_name": "ID",
+              "data_type": "string"
+            },
+            {
+              "column_id": "scenario_name",
+              "column_name": "Scenario Name",
+              "data_type": "string"
+            },
+            {
+              "column_id": "testing_type",
+              "column_name": "Testing Type",
+              "data_type": "string"
+            },
+            {
+              "column_id": "system",
+              "column_name": "System",
+              "data_type": "string"
+            },
+            {
+              "column_id": "menu",
+              "column_name": "Menu",
+              "data_type": "string"
+            },
+            {
+              "column_id": "progress",
+              "column_name": "Progress",
+              "data_type": "string"
+            },
+            {
+              "column_id": "priority",
+              "column_name": "Priority",
+              "data_type": "string"
+            },
+            {
+              "column_id": "steps_to_execute",
+              "column_name": "Steps to Execute",
+              "data_type": "array of strings"
+            },
+            {
+              "column_id": "data_test",
+              "column_name": "Data Test",
+              "data_type": "object"
+            },
+            {
+              "column_id": "expected_result",
+              "column_name": "Expected Result",
+              "data_type": "string"
+            }
+          ]
+        },
+        "key_considerations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "user_stories",
+        "test_case_properties",
+        "key_considerations"
+      ],
+      "additionalProperties": false
+    },
+    "strict": true
+  }
+}

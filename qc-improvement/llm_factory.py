@@ -33,7 +33,7 @@ class LLMFactory:
         if provider.lower() == "openai":
             return OpenAI(
                 api_key=settings.OPENAI_API_KEY,
-            )
+            ), settings.OPENAI_MODEL
         elif provider.lower() == "ollama":
             # Initialize Ollama model
             return OllamaLLM(
@@ -44,10 +44,11 @@ class LLMFactory:
             )
         elif provider.lower() == "gemini":
             # Initialize gemini model
+            print(settings.GEMINI_MODEL)
             return OpenAI(
                 api_key=settings.GEMINI_API_KEY,
                 base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
-            )
+            ), settings.GEMINI_MODEL
 
         # Add more providers here as needed
         # elif provider.lower() == "anthropic":

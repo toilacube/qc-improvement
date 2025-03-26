@@ -90,4 +90,3 @@ class Settings():
 
 settings = Settings()
 
-print(settings.CHAT_PROVIDER)

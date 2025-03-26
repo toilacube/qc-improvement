@@ -1,0 +1,380 @@
+{
+  "key_considerations": [
+    "Security of credentials",
+    "User experience during login",
+    "Error handling and messaging",
+    "Performance under load"
+  ],
+  "user_stories": [
+    {
+      "description": "Users should be able to successfully log in to the system using their registered username and password.",
+      "title": "User Login with Valid Credentials",
+      "test_cases": [
+        {
+          "data_test": {
+            "username": "valid_user",
+            "password": "valid_password",
+            "otp": "",
+            "mobile_email": ""
+          },
+          "scenario_name": "Successful Login with Valid Credentials",
+          "testing_type": "Functional",
+          "system": "Login System",
+          "expected_result": "User is successfully logged in; redirects to the user's dashboard or intended page.",
+          "progress": "Ready",
+          "steps_to_execute": [
+            "Navigate to the login page.",
+            "Enter valid username in the username field.",
+            "Enter valid password in the password field.",
+            "Click the 'Login' button."
+          ],
+          "priority": "High",
+          "menu": "Login",
+          "id": "AP-P4-01"
+        },
+        {
+          "data_test": {
+            "username": "valid_user",
+            "password": "valid_password",
+            "otp": "",
+            "mobile_email": ""
+          },
+          "scenario_name": "Verify Basic Login Functionality",
+          "testing_type": "Smoke",
+          "system": "Login System",
+          "expected_result": "User is successfully logged in; redirects to the user's dashboard.",
+          "progress": "Ready",
+          "steps_to_execute": [
+            "Navigate to the login page.",
+            "Enter valid username.",
+            "Enter valid password.",
+            "Click 'Login'."
+          ],
+          "priority": "High",
+          "menu": "Login",
+          "id": "AP-P5-01"
+        },
+        {
+          "data_test": {
+            "username": "valid_user",
+            "password": "valid_password",
+            "otp": "",
+            "mobile_email": ""
+          },
+          "scenario_name": "Verify Login Performance under Load",
+          "testing_type": "Performance",
+          "system": "Login System",
+          "expected_result": "Login successful within acceptable time (e.g., < 3 seconds) under concurrent user load (e.g., 100 users). No errors are observed.",
+          "progress": "Ready",
+          "steps_to_execute": [
+            "Use a performance testing tool (e.g., JMeter) to simulate 100 concurrent users.",
+            "Each user attempts to log in with valid credentials.",
+            "Monitor response times and error rates."
+          ],
+          "priority": "Medium",
+          "menu": "Login",
+          "id": "AP-P6-01"
+        },
+        {
+          "data_test": {
+            "username": "valid_user",
+            "password": "valid_password",
+            "otp": "",
+            "mobile_email": ""
+          },
+          "scenario_name": "Verify SQL Injection Prevention",
+          "testing_type": "Security",
+          "system": "Login System",
+          "expected_result": "System should not allow SQL injection attempts. Login fails, and an appropriate error message is displayed, without exposing sensitive information.",
+          "progress": "Ready",
+          "steps_to_execute": [
+            "In the username field, enter a SQL injection attempt (e.g., `' OR '1'='1`).",
+            "In the password field, enter a valid or any password.",
+            "Submit the login form.",
+            "Verify that login fails."
+          ],
+          "priority": "High",
+          "menu": "Login",
+          "id": "AP-P7-01"
+        },
+        {
+          "data_test": {
+            "username": "valid_user",
+            "password": "valid_password",
+            "otp": "",
+            "mobile_email": ""
+          },
+          "scenario_name": "Verify Login Navigation",
+          "testing_type": "System",
+          "system": "Login System",
+          "expected_result": "After successful login, the user is redirected to their dashboard or the page they were trying to access before login.",
+          "progress": "Ready",
+          "steps_to_execute": [
+            "Enter valid username and password.",
+            "Click 'Login'.",
+            "Verify redirection to expected page."
+          ],
+          "priority": "Medium",
+          "menu": "Login",
+          "id": "AP-P8-01"
+        }
+      ]
+    },
+    {
+      "description": "The system should provide clear and helpful error messages when a user enters invalid credentials.",
+      "title": "User Login with Invalid Credentials",
+      "test_cases": [
+        {
+          "data_test": {
+            "username": "invalid_user",
+            "password": "valid_password",
+            "otp": "",
+            "mobile_email": ""
+          },
+          "scenario_name": "Login with Invalid Username",
+          "testing_type": "Functional",
+          "system": "Login System",
+          "expected_result": "System displays an informative error message (e.g., 'Invalid username or password'). Login is unsuccessful.",
+          "progress": "Ready",
+          "steps_to_execute": [
+            "Navigate to the login page.",
+            "Enter an invalid username.",
+            "Enter a valid password.",
+            "Click 'Login'."
+          ],
+          "priority": "High",
+          "menu": "Login",
+          "id": "AP-P4-02"
+        },
+        {
+          "data_test": {
+            "username": "valid_user",
+            "password": "invalid_password",
+            "otp": "",
+            "mobile_email": ""
+          },
+          "scenario_name": "Login with Invalid Password",
+          "testing_type": "Functional",
+          "system": "Login System",
+          "expected_result": "System displays an informative error message (e.g., 'Invalid username or password'). Login is unsuccessful.",
+          "progress": "Ready",
+          "steps_to_execute": [
+            "Navigate to the login page.",
+            "Enter a valid username.",
+            "Enter an invalid password.",
+            "Click 'Login'."
+          ],
+          "priority": "High",
+          "menu": "Login",
+          "id": "AP-P4-03"
+        },
+        {
+          "data_test": {
+            "username": "invalid_user",
+            "password": "invalid_password",
+            "otp": "",
+            "mobile_email": ""
+          },
+          "scenario_name": "Login with both invalid credentials",
+          "testing_type": "Smoke",
+          "system": "Login System",
+          "expected_result": "Login fails, displaying an informative error message.",
+          "progress": "Ready",
+          "steps_to_execute": [
+            "Navigate to the login page.",
+            "Enter invalid username.",
+            "Enter invalid password.",
+            "Click 'Login'."
+          ],
+          "priority": "High",
+          "menu": "Login",
+          "id": "AP-P5-02"
+        },
+        {
+          "data_test": {
+            "username": "invalid_user",
+            "password": "invalid_password",
+            "otp": "",
+            "mobile_email": ""
+          },
+          "scenario_name": "Verify System does not allow Brute Force attacks",
+          "testing_type": "Security",
+          "system": "Login System",
+          "expected_result": "Login attempts are rate limited.",
+          "progress": "Ready",
+          "steps_to_execute": [
+            "Enter invalid username and password multiple times consecutively.",
+            "Verify that system blocks or limits the login attempts after a certain number of tries."
+          ],
+          "priority": "High",
+          "menu": "Login",
+          "id": "AP-P7-02"
+        }
+      ]
+    },
+    {
+      "description": "The system should handle password reset functionality securely.",
+      "title": "Password Reset",
+      "test_cases": [
+        {
+          "data_test": {
+            "username": "valid_user",
+            "password": "",
+            "otp": "",
+            "mobile_email": "valid@example.com"
+          },
+          "scenario_name": "Verify password reset with valid email",
+          "testing_type": "Functional",
+          "system": "Login System",
+          "expected_result": "Password reset email sent to the provided email address. User able to reset the password.",
+          "progress": "Ready",
+          "steps_to_execute": [
+            "Initiate password reset.",
+            "Enter valid email address.",
+            "Verify receiving a password reset email.",
+            "Reset the password using the link provided in the email."
+          ],
+          "priority": "High",
+          "menu": "Login",
+          "id": "AP-P4-04"
+        },
+        {
+          "data_test": {
+            "username": "valid_user",
+            "password": "",
+            "otp": "",
+            "mobile_email": "invalid_email"
+          },
+          "scenario_name": "Verify password reset with invalid email",
+          "testing_type": "Functional",
+          "system": "Login System",
+          "expected_result": "System displays an informative error message (e.g., 'Invalid email address').",
+          "progress": "Ready",
+          "steps_to_execute": [
+            "Initiate password reset.",
+            "Enter invalid email address.",
+            "Verify that the system displays appropriate error message."
+          ],
+          "priority": "High",
+          "menu": "Login",
+          "id": "AP-P4-05"
+        },
+        {
+          "data_test": {
+            "username": "valid_user",
+            "password": "",
+            "otp": "",
+            "mobile_email": "valid@example.com"
+          },
+          "scenario_name": "Verify Password Reset Flow",
+          "testing_type": "System",
+          "system": "Login System",
+          "expected_result": "Password successfully reset using the reset flow.",
+          "progress": "Ready",
+          "steps_to_execute": [
+            "Initiate password reset.",
+            "Enter valid email.",
+            "Receive password reset email.",
+            "Click reset link in email.",
+            "Enter new password.",
+            "Confirm new password.",
+            "Login using new password."
+          ],
+          "priority": "High",
+          "menu": "Login",
+          "id": "AP-P8-03"
+        },
+        {
+          "data_test": {
+            "username": "valid_user",
+            "password": "",
+            "otp": "",
+            "mobile_email": "valid@example.com"
+          },
+          "scenario_name": "Password Reset Link Expiration",
+          "testing_type": "Security",
+          "system": "Login System",
+          "expected_result": "The password reset link expires within the specified time limit (e.g., 30 minutes or 1 hour) and becomes invalid after the expiration time.",
+          "progress": "Ready",
+          "steps_to_execute": [
+            "Initiate password reset.",
+            "Receive the password reset email and its link.",
+            "Wait past the reset link expiration time.",
+            "Try to access the password reset link, or the link does not work.",
+            "The system displays an appropriate error message, and doesn't allow password reset via that link."
+          ],
+          "priority": "Medium",
+          "menu": "Login",
+          "id": "AP-P7-03"
+        }
+      ]
+    }
+  ],
+  "test_case_properties": [
+    {
+      "column_id": "username",
+      "data_type": "string",
+      "column_name": "Username"
+    },
+    {
+      "column_id": "password",
+      "data_type": "string",
+      "column_name": "Password"
+    },
+    {
+      "column_id": "otp",
+      "data_type": "string",
+      "column_name": "OTP"
+    },
+    {
+      "column_id": "mobile_email",
+      "data_type": "string",
+      "column_name": "Mobile/Email"
+    },
+    {
+      "column_id": "scenario_name",
+      "data_type": "string",
+      "column_name": "Scenario Name"
+    },
+    {
+      "column_id": "testing_type",
+      "data_type": "string",
+      "column_name": "Testing Type"
+    },
+    {
+      "column_id": "system",
+      "data_type": "string",
+      "column_name": "System"
+    },
+    {
+      "column_id": "expected_result",
+      "data_type": "string",
+      "column_name": "Expected Result"
+    },
+    {
+      "column_id": "progress",
+      "data_type": "string",
+      "column_name": "Progress"
+    },
+    {
+      "column_id": "steps_to_execute",
+      "data_type": "array",
+      "column_name": "Steps to Execute"
+    },
+    {
+      "column_id": "priority",
+      "data_type": "string",
+      "column_name": "Priority"
+    },
+    {
+      "column_id": "menu",
+      "data_type": "string",
+      "column_name": "Menu"
+    },
+    {
+      "column_id": "id",
+      "data_type": "string",
+      "column_name": "ID"
+    }
+  ]
+}

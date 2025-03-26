@@ -1,0 +1,175 @@
+{
+  "user_stories": [
+    {
+      "title": "User Login with Username and Password",
+      "test_cases": [
+        {
+          "priority": "High",
+          "id": "AP-P4-01",
+          "menu": "Login",
+          "expected_result": "User successfully logs in and is redirected to the dashboard.",
+          "scenario_name": "Successful Login",
+          "system": "Authentication",
+          "progress": "Ready",
+          "data_test": {
+            "username": "valid_username",
+            "password": "valid_password"
+          },
+          "testing_type": "Functional",
+          "steps_to_execute": [
+            "1. Navigate to the login page.",
+            "2. Enter valid username.",
+            "3. Enter valid password.",
+            "4. Click the login button."
+          ]
+        },
+        {
+          "priority": "High",
+          "id": "AP-P4-02",
+          "menu": "Login",
+          "expected_result": "System displays an appropriate error message (e.g., \"Invalid username or password\").",
+          "scenario_name": "Invalid Username",
+          "system": "Authentication",
+          "progress": "Ready",
+          "data_test": {
+            "username": "invalid_username",
+            "password": "valid_password"
+          },
+          "testing_type": "Functional",
+          "steps_to_execute": [
+            "1. Navigate to the login page.",
+            "2. Enter invalid username.",
+            "3. Enter valid password.",
+            "4. Click the login button."
+          ]
+        },
+        {
+          "priority": "High",
+          "id": "AP-P4-03",
+          "menu": "Login",
+          "expected_result": "System displays an appropriate error message (e.g., \"Invalid username or password\").",
+          "scenario_name": "Invalid Password",
+          "system": "Authentication",
+          "progress": "Ready",
+          "data_test": {
+            "username": "valid_username",
+            "password": "invalid_password"
+          },
+          "testing_type": "Functional",
+          "steps_to_execute": [
+            "1. Navigate to the login page.",
+            "2. Enter valid username.",
+            "3. Enter invalid password.",
+            "4. Click the login button."
+          ]
+        },
+        {
+          "priority": "High",
+          "id": "AP-P4-04",
+          "menu": "Login",
+          "expected_result": "System displays an error message and does not allow login.",
+          "scenario_name": "Empty Username and Password",
+          "system": "Authentication",
+          "progress": "Ready",
+          "data_test": {
+            "username": "",
+            "password": ""
+          },
+          "testing_type": "Functional",
+          "steps_to_execute": [
+            "1. Navigate to the login page.",
+            "2. Leave username blank.",
+            "3. Leave password blank.",
+            "4. Click the login button."
+          ]
+        },
+        {
+          "priority": "Medium",
+          "id": "AP-P5-01",
+          "menu": "Login",
+          "expected_result": "User can log in successfully.",
+          "scenario_name": "Smoke Test - Successful Login",
+          "system": "Authentication",
+          "progress": "Ready",
+          "data_test": {
+            "username": "valid_username",
+            "password": "valid_password"
+          },
+          "testing_type": "Smoke",
+          "steps_to_execute": [
+            "1. Navigate to the login page.",
+            "2. Enter valid username.",
+            "3. Enter valid password.",
+            "4. Click the login button."
+          ]
+        },
+        {
+          "priority": "Medium",
+          "id": "AP-P6-01",
+          "menu": "Login",
+          "expected_result": "The system should handle the load and users can still log in within an acceptable time frame.",
+          "scenario_name": "Performance Test - Login under Load",
+          "system": "Authentication",
+          "progress": "Ready",
+          "data_test": {},
+          "testing_type": "Performance",
+          "steps_to_execute": [
+            "1. Use a load testing tool (e.g., JMeter) to simulate multiple concurrent users logging in.",
+            "2. Monitor the response time for login attempts.",
+            "3. Monitor the server resources (CPU, memory)."
+          ]
+        },
+        {
+          "priority": "High",
+          "id": "AP-P7-01",
+          "menu": "Login",
+          "expected_result": "The system should prevent SQL injection and not allow malicious code to be executed.",
+          "scenario_name": "Security Test - SQL Injection",
+          "system": "Authentication",
+          "progress": "Ready",
+          "data_test": {
+            "username": "';--",
+            "password": "password"
+          },
+          "testing_type": "Security",
+          "steps_to_execute": [
+            "1. Navigate to the login page.",
+            "2. Enter a username with a SQL injection attempt (e.g.,  ';--).",
+            "3. Enter a valid password.",
+            "4. Click the login button.",
+            "5. Verify that the system does not allow the login."
+          ]
+        },
+        {
+          "priority": "Medium",
+          "id": "AP-P8-01",
+          "menu": "Login",
+          "expected_result": "User is redirected to the appropriate page after a successful login.",
+          "scenario_name": "System Test - Successful Login and Redirection",
+          "system": "Authentication",
+          "progress": "Ready",
+          "data_test": {
+            "username": "valid_username",
+            "password": "valid_password"
+          },
+          "testing_type": "System",
+          "steps_to_execute": [
+            "1. Navigate to the login page.",
+            "2. Enter valid username.",
+            "3. Enter valid password.",
+            "4. Click the login button.",
+            "5. Verify that the user is redirected to the expected page (e.g., dashboard)."
+          ]
+        }
+      ],
+      "description": "This user story covers the login functionality using username and password authentication."
+    }
+  ],
+  "key_considerations": [
+    "Input validation to prevent SQL injection and other security vulnerabilities.",
+    "Error handling and display of user-friendly error messages.",
+    "Performance testing to ensure the system can handle concurrent login requests.",
+    "Usability testing to ensure the login process is intuitive and easy to use.",
+    "Secure storage and handling of user credentials."
+  ]
+}
