@@ -4,7 +4,7 @@
 - Json to Excel file
 
 ## 26/3/2025
-1. Refactor the LLM factory 
+1. Refactor the LLM factory to openai
 1.1 Organize the project, too messy
 2. Config the LLM to response with structure:
     - Structure is read from json
