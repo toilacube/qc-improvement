@@ -1,217 +1,135 @@
 {
+  "key_considerations": [
+    "Session termination",
+    "Data persistence",
+    "User redirection",
+    "Security",
+    "Usability"
+  ],
   "user_stories": [
     {
-      "title": "Login with Username and Password",
       "test_cases": [
         {
-          "id": "AP-P4-01",
+          "menu": "User Profile",
+          "id": "LO-P4-01",
+          "progress": "Ready",
+          "system": "Authentication",
           "testing_type": "Functional",
-          "scenario_name": "Successful Login with Valid Credentials",
-          "steps_to_execute": [
-            "1. Navigate to the login page.",
-            "2. Enter valid username in the username field.",
-            "3. Enter valid password in the password field.",
-            "4. Click the \"Login\" button."
-          ],
           "priority": "High",
-          "progress": "Ready",
-          "menu": "Login",
-          "expected_result": "User is successfully logged in and redirected to the home page.",
-          "system": "Authentication"
+          "steps_to_execute": [
+            "1. Navigate to the user profile.",
+            "2. Click the \"Logout\" button."
+          ],
+          "expected_result": "User is logged out and redirected to the login page.",
+          "scenario_name": "Verify successful logout from user profile."
         },
         {
-          "id": "AP-P4-02",
+          "menu": "Header",
+          "id": "LO-P4-02",
+          "progress": "Ready",
+          "system": "Authentication",
           "testing_type": "Functional",
-          "scenario_name": "Login with Invalid Username and Valid Password",
-          "steps_to_execute": [
-            "1. Navigate to the login page.",
-            "2. Enter an invalid username in the username field.",
-            "3. Enter a valid password in the password field.",
-            "4. Click the \"Login\" button."
-          ],
           "priority": "High",
-          "progress": "Ready",
-          "menu": "Login",
-          "expected_result": "An appropriate error message is displayed indicating invalid username.",
-          "system": "Authentication"
-        },
-        {
-          "id": "AP-P4-03",
-          "testing_type": "Functional",
-          "scenario_name": "Login with Valid Username and Invalid Password",
           "steps_to_execute": [
-            "1. Navigate to the login page.",
-            "2. Enter a valid username in the username field.",
-            "3. Enter an invalid password in the password field.",
-            "4. Click the \"Login\" button."
+            "1. Ensure the user is logged in.",
+            "2. Click the logout option in the header."
           ],
-          "priority": "High",
-          "progress": "Ready",
-          "menu": "Login",
-          "expected_result": "An appropriate error message is displayed indicating invalid password.",
-          "system": "Authentication"
+          "expected_result": "User is logged out and redirected to the login page.",
+          "scenario_name": "Verify successful logout from header."
         },
         {
-          "id": "AP-P4-04",
-          "testing_type": "Functional",
-          "scenario_name": "Login with Empty Username and Password Fields",
-          "steps_to_execute": [
-            "1. Navigate to the login page.",
-            "2. Leave both username and password fields empty.",
-            "3. Click the \"Login\" button."
-          ],
-          "priority": "High",
+          "menu": "Anywhere",
+          "id": "LO-P5-01",
           "progress": "Ready",
-          "menu": "Login",
-          "expected_result": "Appropriate error messages are displayed indicating that both fields are required.",
-          "system": "Authentication"
-        },
-        {
-          "id": "AP-P4-05",
-          "testing_type": "Functional",
-          "scenario_name": "Login with Special Characters in Username",
-          "steps_to_execute": [
-            "1. Navigate to the login page.",
-            "2. Enter a valid username with special characters in the username field.",
-            "3. Enter a valid password in the password field.",
-            "4. Click the \"Login\" button."
-          ],
-          "priority": "Medium",
-          "progress": "Ready",
-          "menu": "Login",
-          "expected_result": "User is successfully logged in, or an appropriate error message is displayed if special characters are not allowed.",
-          "system": "Authentication"
-        },
-        {
-          "id": "AP-P4-06",
-          "testing_type": "Functional",
-          "scenario_name": "Login with Special Characters in Password",
-          "steps_to_execute": [
-            "1. Navigate to the login page.",
-            "2. Enter a valid username in the username field.",
-            "3. Enter a valid password with special characters in the password field.",
-            "4. Click the \"Login\" button."
-          ],
-          "priority": "Medium",
-          "progress": "Ready",
-          "menu": "Login",
-          "expected_result": "User is successfully logged in, or an appropriate error message is displayed if special characters are not allowed.",
-          "system": "Authentication"
-        },
-        {
-          "id": "AP-P5-01",
+          "system": "Authentication",
           "testing_type": "Smoke",
-          "scenario_name": "Verify Login Functionality",
-          "steps_to_execute": [
-            "1. Navigate to the login page.",
-            "2. Enter valid username.",
-            "3. Enter valid password.",
-            "4. Click \"Login\"."
-          ],
           "priority": "High",
-          "progress": "Ready",
-          "menu": "Login",
-          "expected_result": "User is successfully logged in and redirected to the home page.",
-          "system": "Authentication"
+          "steps_to_execute": [
+            "1. Log in to the system.",
+            "2. Verify that the logout functionality is available and accessible from the profile or header.",
+            "3. Click the \"Logout\" button."
+          ],
+          "expected_result": "User is successfully logged out and redirected to the login page. The system no longer displays user-specific information or requires authentication.",
+          "scenario_name": "Verify basic logout functionality."
         },
         {
-          "id": "AP-P6-01",
+          "menu": "User Profile",
+          "id": "LO-P6-01",
+          "progress": "Ready",
+          "system": "Authentication",
           "testing_type": "Performance",
-          "scenario_name": "Login Page Load Time",
-          "steps_to_execute": [
-            "1. Use a performance testing tool (e.g., JMeter) to simulate multiple users accessing the login page.",
-            "2. Measure the time taken for the login page to load."
-          ],
           "priority": "Medium",
-          "progress": "Ready",
-          "menu": "Login",
-          "expected_result": "The login page should load within the acceptable time limits (e.g., 2-3 seconds).",
-          "system": "Authentication"
-        },
-        {
-          "id": "AP-P6-02",
-          "testing_type": "Performance",
-          "scenario_name": "Login Performance Under Load",
           "steps_to_execute": [
-            "1. Simulate multiple concurrent logins using a performance testing tool (e.g., JMeter).",
-            "2. Monitor the response time and error rates."
+            "1. Using a performance testing tool (e.g., JMeter), simulate multiple concurrent users logging out simultaneously (e.g., 100 users).",
+            "2. Monitor the server response times for the logout requests."
           ],
-          "priority": "Medium",
-          "progress": "Ready",
-          "menu": "Login",
-          "expected_result": "The system should handle the load without significant performance degradation or errors.",
-          "system": "Authentication"
+          "expected_result": "The average logout response time should be within acceptable limits (e.g., < 2 seconds) and the server should not experience significant performance degradation or errors.",
+          "scenario_name": "Verify logout performance under load."
         },
         {
-          "id": "AP-P7-01",
+          "menu": "Anywhere",
+          "id": "LO-P7-01",
+          "progress": "Ready",
+          "system": "Authentication",
           "testing_type": "Security",
-          "scenario_name": "SQL Injection Vulnerability",
-          "steps_to_execute": [
-            "1. Navigate to the login page.",
-            "2. Enter a malicious string (e.g., SQL injection attempts) in the username field.",
-            "3. Enter a valid password.",
-            "4. Click \"Login\"."
-          ],
           "priority": "High",
-          "progress": "Ready",
-          "menu": "Login",
-          "expected_result": "The system should not be vulnerable to SQL injection; appropriate error messages should be displayed, and the malicious input should be sanitized.",
-          "system": "Authentication"
+          "steps_to_execute": [
+            "1. Log in to the system.",
+            "2. After logout, try to access a protected resource (e.g., user profile, admin panel) by directly entering the URL in the browser.",
+            "3. Verify that the system correctly denies access."
+          ],
+          "expected_result": "The system redirects the user to the login page or displays an appropriate \"access denied\" message. The protected resource is not accessible.",
+          "scenario_name": "Verify access control after logout."
         },
         {
-          "id": "AP-P7-02",
-          "testing_type": "Security",
-          "scenario_name": "Brute-Force Attack Prevention",
-          "steps_to_execute": [
-            "1. Attempt multiple login attempts with incorrect credentials.",
-            "2. Observe the system's response."
-          ],
-          "priority": "High",
+          "menu": "Anywhere",
+          "id": "LO-P8-01",
           "progress": "Ready",
-          "menu": "Login",
-          "expected_result": "The system should implement measures to prevent brute-force attacks, such as account lockout after multiple failed attempts or CAPTCHA verification.",
-          "system": "Authentication"
-        },
-        {
-          "id": "AP-P8-01",
+          "system": "Authentication",
           "testing_type": "System",
-          "scenario_name": "Login and Logout Workflow",
+          "priority": "Medium",
           "steps_to_execute": [
-            "1. Log in with valid credentials.",
-            "2. Navigate to the logout functionality.",
-            "3. Click \"Logout\"."
+            "1. Log in to the system.",
+            "2. Perform several actions that generate data (e.g., create a post, add items to a cart).",
+            "3. Click the \"Logout\" button.",
+            "4. Attempt to access the account after logout."
           ],
-          "priority": "High",
+          "expected_result": "User is logged out. When the same user logs back in, the data previously created is retained, and the account is in the same state as before logout.",
+          "scenario_name": "Verify data persistence and session invalidation on logout."
+        },
+        {
+          "menu": "Anywhere",
+          "id": "LO-P4-03",
           "progress": "Ready",
-          "menu": "Login",
-          "expected_result": "User is successfully logged out and redirected to the login page.",
-          "system": "Authentication"
+          "system": "Authentication",
+          "testing_type": "Functional",
+          "priority": "High",
+          "steps_to_execute": [
+            "1. Log in to the system.",
+            "2. Close the browser without logging out.",
+            "3. Open the browser and attempt to access protected resources (e.g., user profile).",
+            "4. Open the browser again and try to log in."
+          ],
+          "expected_result": "The system requires the user to re-enter credentials, effectively ending the previous session. Protected resources are inaccessible until a successful login.",
+          "scenario_name": "Verify session termination when the browser is closed without logging out."
         }
       ],
-      "description": "This user story focuses on the login flow using username and password authentication."
+      "description": "This user story focuses on verifying the successful logout process, including session termination, data persistence, and user redirection.",
+      "title": "Implement Logout Functionality"
     }
   ],
-  "key_considerations": [
-    "Security: Protection against SQL injection, brute-force attacks, and other vulnerabilities.",
-    "Performance: Ensuring the login page loads quickly and handles concurrent users.",
-    "Usability: Clear error messages and a user-friendly login experience.",
-    "Accessibility: Ensuring the login page is accessible to users with disabilities."
-  ],
   "test_case_properties": {
-    "system": {
-      "value": "System"
+    "id": {
+      "value": "ID"
     },
     "progress": {
       "value": "Progress"
     },
-    "expected_result": {
-      "value": "Expected Result"
-    },
     "testing_type": {
       "value": "Testing Type"
     },
-    "id": {
-      "value": "ID"
+    "scenario_name": {
+      "value": "Scenario Name"
     },
     "menu": {
       "value": "Menu"
@@ -219,11 +137,14 @@
     "priority": {
       "value": "Priority"
     },
-    "scenario_name": {
-      "value": "Scenario Name"
+    "expected_result": {
+      "value": "Expected Result"
     },
     "steps_to_execute": {
       "value": "Steps to Execute"
+    },
+    "system": {
+      "value": "System"
     }
   }
 }
