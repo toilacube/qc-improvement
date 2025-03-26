@@ -1,0 +1,31 @@
+{
+  "id": {
+    "value": "ID"
+  },
+  "progress": {
+    "value": "Progress"
+  },
+
+  "testing_type": {
+    "value": "Testing Type"
+  },
+  "scenario_name": {
+    "value": "Scenario Name"
+  },
+  "menu": {
+    "value": "Menu"
+  },
+  "priority": {
+    "value": "Priority"
+  },
+
+  "expected_result": {
+    "value": "Expected Result"
+  },
+  "steps_to_execute": {
+    "value": "Steps to Execute"
+  },
+  "system": {
+    "value": "System"
+  }
+}

@@ -8,9 +8,9 @@ client = None
 system_prompt = None
 response_format = None
 model = None
-
+table_heads = None
 def init():
-    global client, system_prompt, response_format, model
+    global client, system_prompt, response_format, model, table_heads
     
     client, model = LLMFactory.create(provider = 'gemini')
 
@@ -20,6 +20,10 @@ def init():
 
     with open("../json/schema_v2.json", "r", encoding="utf-8") as f:
         response_format =  json.load(f)
+
+    with open("../json/table_heads.json", "r", encoding="utf-8") as f:
+        table_heads = json.load(f)
+
 
     print(f"init status: model {model}")
 
@@ -48,7 +52,10 @@ def generate_test_case(input: str):
         response_format=response_format
     )
     with open("../json/response.json", "w", encoding="utf-8") as f:
-        f.write(completion.choices[0].message.content)
+        output = json.loads(completion.choices[0].message.content)
+        output["test_case_properties"] = table_heads
+        
+        f.write(json.dumps(output, indent=2))
     print(f"Model used: {completion.model}")
     print(f"Usage: {completion.usage.total_tokens} tokens")
 
