@@ -4,14 +4,15 @@ from crawl4ai.async_configs import BrowserConfig, CrawlerRunConfig
 
 async def main():
     browser_config = BrowserConfig()  # Default browser configuration
-    run_config = CrawlerRunConfig()   # Default crawl run configuration
+    run_config = CrawlerRunConfig(excluded_tags=['img'])   # Default crawl run configuration
 
     async with AsyncWebCrawler(config=browser_config) as crawler:
         result = await crawler.arun(
-            url="https://coolmate.me",
+            url="https://www.lottemart.vn/login",
             config=run_config
         )
-        print(result.html)  # Print clean markdown content
+        with open("../json/html.md", "w", encoding="utf-8") as f:
+            f.write(result.cleaned_html)
 
 if __name__ == "__main__":
     asyncio.run(main())

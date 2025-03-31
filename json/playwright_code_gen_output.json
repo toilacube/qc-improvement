@@ -1,0 +1,17 @@
+{
+  "fields": [
+    {
+      "type": "textbox",
+      "label": "Email/Số điện thoại",
+      "placeholder": "",
+      "key": "email"
+    },
+    {
+      "type": "textbox",
+      "label": "Mật khẩu",
+      "placeholder": "",
+      "key": "password"
+    }
+  ],
+  "code": "import re\nfrom playwright.sync_api import Playwright, sync_playwright, expect\n\n\ndef run(playwright: Playwright, email, password) -> None:\n    browser = playwright.chromium.launch(headless=False)\n    context = browser.new_context()\n    page = context.new_page()\n    page.goto(\"https://www.lottemart.vn/login\")\n    page.get_by_role(\"textbox\", name=\"Email/Số điện thoại *\").click()\n    page.get_by_role(\"textbox\", name=\"Email/Số điện thoại *\").fill(email)\n    page.get_by_role(\"textbox\", name=\"Mật khẩu *\").click()\n    page.get_by_role(\"textbox\", name=\"Mật khẩu *\").fill(password)\n    page.get_by_role(\"button\", name=\"Đăng nhập\").click()\n\n    # ---------------------\n    context.close()\n    browser.close()\n\n\nwith sync_playwright() as playwright:\n    email = input(\"Enter email: \")\n    password = input(\"Enter password: \")\n    run(playwright, email, password)"
+}

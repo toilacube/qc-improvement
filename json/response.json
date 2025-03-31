@@ -1,122 +1,111 @@
 {
-  "key_considerations": [
-    "Session termination",
-    "Data persistence",
-    "User redirection",
-    "Security",
-    "Usability"
-  ],
   "user_stories": [
     {
       "test_cases": [
         {
-          "menu": "User Profile",
-          "id": "LO-P4-01",
-          "progress": "Ready",
-          "system": "Authentication",
+          "steps_to_execute": [
+            "1.  User is logged in.",
+            "2.  Click the 'Logout' button."
+          ],
+          "expected_result": "User is redirected to the login page or a generic logged-out state. The session is terminated.",
+          "automatable": "Yes (via UI automation and session verification)",
+          "id": "AP-P4-09",
           "testing_type": "Functional",
-          "priority": "High",
-          "steps_to_execute": [
-            "1. Navigate to the user profile.",
-            "2. Click the \"Logout\" button."
-          ],
-          "expected_result": "User is logged out and redirected to the login page.",
-          "scenario_name": "Verify successful logout from user profile."
-        },
-        {
-          "menu": "Header",
-          "id": "LO-P4-02",
-          "progress": "Ready",
-          "system": "Authentication",
-          "testing_type": "Functional",
-          "priority": "High",
-          "steps_to_execute": [
-            "1. Ensure the user is logged in.",
-            "2. Click the logout option in the header."
-          ],
-          "expected_result": "User is logged out and redirected to the login page.",
-          "scenario_name": "Verify successful logout from header."
-        },
-        {
-          "menu": "Anywhere",
-          "id": "LO-P5-01",
-          "progress": "Ready",
-          "system": "Authentication",
-          "testing_type": "Smoke",
-          "priority": "High",
-          "steps_to_execute": [
-            "1. Log in to the system.",
-            "2. Verify that the logout functionality is available and accessible from the profile or header.",
-            "3. Click the \"Logout\" button."
-          ],
-          "expected_result": "User is successfully logged out and redirected to the login page. The system no longer displays user-specific information or requires authentication.",
-          "scenario_name": "Verify basic logout functionality."
-        },
-        {
           "menu": "User Profile",
-          "id": "LO-P6-01",
-          "progress": "Ready",
           "system": "Authentication",
-          "testing_type": "Performance",
-          "priority": "Medium",
-          "steps_to_execute": [
-            "1. Using a performance testing tool (e.g., JMeter), simulate multiple concurrent users logging out simultaneously (e.g., 100 users).",
-            "2. Monitor the server response times for the logout requests."
-          ],
-          "expected_result": "The average logout response time should be within acceptable limits (e.g., < 2 seconds) and the server should not experience significant performance degradation or errors.",
-          "scenario_name": "Verify logout performance under load."
+          "priority": "High",
+          "progress": "Ready",
+          "scenario_name": "Verify Successful Logout"
         },
         {
-          "menu": "Anywhere",
-          "id": "LO-P7-01",
-          "progress": "Ready",
-          "system": "Authentication",
+          "steps_to_execute": [
+            "1.  User is logged in.",
+            "2.  Initiate logout process (e.g., click logout button).",
+            "3.  Immediately close the browser."
+          ],
+          "expected_result": "Upon reopening the browser, the user is not logged in. The session is terminated.",
+          "automatable": "Yes (using automation and session validation checks after browser restart)",
+          "id": "AP-P7-02",
           "testing_type": "Security",
+          "menu": "User Profile",
+          "system": "Authentication",
           "priority": "High",
-          "steps_to_execute": [
-            "1. Log in to the system.",
-            "2. After logout, try to access a protected resource (e.g., user profile, admin panel) by directly entering the URL in the browser.",
-            "3. Verify that the system correctly denies access."
-          ],
-          "expected_result": "The system redirects the user to the login page or displays an appropriate \"access denied\" message. The protected resource is not accessible.",
-          "scenario_name": "Verify access control after logout."
+          "progress": "Ready",
+          "scenario_name": "Verify Session Termination After Logout and Browser Closure"
         },
         {
-          "menu": "Anywhere",
-          "id": "LO-P8-01",
-          "progress": "Ready",
-          "system": "Authentication",
-          "testing_type": "System",
-          "priority": "Medium",
           "steps_to_execute": [
-            "1. Log in to the system.",
-            "2. Perform several actions that generate data (e.g., create a post, add items to a cart).",
-            "3. Click the \"Logout\" button.",
-            "4. Attempt to access the account after logout."
+            "1.  User is logged in.",
+            "2.  Attempt to access a protected resource after clicking 'logout'."
           ],
-          "expected_result": "User is logged out. When the same user logs back in, the data previously created is retained, and the account is in the same state as before logout.",
-          "scenario_name": "Verify data persistence and session invalidation on logout."
-        },
-        {
-          "menu": "Anywhere",
-          "id": "LO-P4-03",
-          "progress": "Ready",
-          "system": "Authentication",
+          "expected_result": "The user is redirected to the login page, access is denied, and a login is required to access the protected resource.",
+          "automatable": "Yes (after logout, attempt to access a protected page via automation)",
+          "id": "AP-P4-10",
           "testing_type": "Functional",
+          "menu": "User Profile",
+          "system": "Authentication",
           "priority": "High",
+          "progress": "Ready",
+          "scenario_name": "Verify Access to Protected Resources After Logout"
+        },
+        {
           "steps_to_execute": [
-            "1. Log in to the system.",
-            "2. Close the browser without logging out.",
-            "3. Open the browser and attempt to access protected resources (e.g., user profile).",
-            "4. Open the browser again and try to log in."
+            "1.  User is logged in.",
+            "2.  Click the 'logout' button multiple times in quick succession."
           ],
-          "expected_result": "The system requires the user to re-enter credentials, effectively ending the previous session. Protected resources are inaccessible until a successful login.",
-          "scenario_name": "Verify session termination when the browser is closed without logging out."
+          "expected_result": "The system handles multiple logout requests gracefully, and the user is logged out only once. No errors occur.",
+          "automatable": "Yes (can be automated using scripting tools to rapidly click the logout button)",
+          "id": "AP-P6-03",
+          "testing_type": "Performance",
+          "menu": "User Profile",
+          "system": "Authentication",
+          "priority": "Medium",
+          "progress": "Ready",
+          "scenario_name": "Verify Logout Process Under Load"
+        },
+        {
+          "steps_to_execute": [
+            "1.  Log in.",
+            "2.  Log out.",
+            "3.  Immediately try to log in with the same credentials."
+          ],
+          "expected_result": "The user can log in successfully after logging out.",
+          "automatable": "Yes (using UI automation to log in and log out and then immediately log in again)",
+          "id": "AP-P5-03",
+          "testing_type": "Smoke",
+          "menu": "User Profile",
+          "system": "Authentication",
+          "priority": "High",
+          "progress": "Ready",
+          "scenario_name": "Verify Basic Logout and Login Functionality"
+        },
+        {
+          "steps_to_execute": [
+            "1.  Log in.",
+            "2.  Log out.",
+            "3.  Navigate to the original page using the back button."
+          ],
+          "expected_result": "The user is redirected to the login page or a logged-out state, and cannot access the previously viewed content.",
+          "automatable": "No (Requires manual verification of the browser back button behavior)",
+          "id": "AP-P8-03",
+          "testing_type": "System",
+          "menu": "User Profile",
+          "system": "Authentication",
+          "priority": "Medium",
+          "progress": "Ready",
+          "scenario_name": "Verify Back Button Navigation After Logout"
         }
       ],
-      "description": "This user story focuses on verifying the successful logout process, including session termination, data persistence, and user redirection.",
-      "title": "Implement Logout Functionality"
+      "title": "Verify Logout Functionality",
+      "description": "Ensure that the logout process correctly terminates the user's session and redirects them to the appropriate page."
     }
+  ],
+  "key_considerations": [
+    "Session management",
+    "Redirection after logout",
+    "Security of the logout process",
+    "Handling concurrent requests",
+    "Browser caching"
   ],
   "test_case_properties": {
     "id": {
@@ -145,6 +134,9 @@
     },
     "system": {
       "value": "System"
+    },
+    "automatable": {
+      "value": "Automatable"
     }
   }
 }

@@ -1,0 +1,5 @@
+From the test-case story data {story_data} and the cleaned_html of the web page {cleaned_html}, generate python playwright code to execute the test-case. Please ask the user which information you will need to know to ensure certainty to procude accurate code, then response with this json format:
+	{
+		"field": str,
+		"value": str
+	}

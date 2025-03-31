@@ -27,5 +27,8 @@
   },
   "system": {
     "value": "System"
+  },
+  "automatable": {
+    "value": "Automatable"
   }
 }

@@ -1,0 +1,3 @@
+- generateClickStep(selector)
+- generateScreenshotStep(name, fullpage?)
+- generateFillStep(selector, value)

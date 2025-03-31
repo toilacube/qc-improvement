@@ -214,3 +214,4 @@ if __name__ == "__main__":
     # Generate custom prompt
     custom_prompt = factory.create_prompt(custom_config)
     print("\nCustom Prompt:\n", custom_prompt)
+    

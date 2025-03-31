@@ -1,0 +1,48 @@
+{
+  "fields": [
+    {
+      "key": "url",
+      "type": "string",
+      "placeholder": "page.goto(\"https://www.lottemart.vn/login\")",
+      "label": "Website URL"
+    },
+    {
+      "key": "username_field_locator",
+      "type": "string",
+      "placeholder": "page.get_by_role(\"textbox\", name=\"Email/Số điện thoại *\").click()",
+      "label": "Username Field Locator"
+    },
+    {
+      "key": "password_field_locator",
+      "type": "string",
+      "placeholder": "e.g., 'text=Mật khẩu'",
+      "label": "Password Field Locator"
+    },
+    {
+      "key": "login_button_locator",
+      "type": "string",
+      "placeholder": "e.g., 'text=Đăng nhập'",
+      "label": "Login Button Locator"
+    },
+    {
+      "key": "username",
+      "type": "string",
+      "placeholder": "e.g., your_username@example.com",
+      "label": "Valid Username"
+    },
+    {
+      "key": "password",
+      "type": "string",
+      "placeholder": "e.g., YourPassword123",
+      "label": "Valid Password"
+    },
+    {
+      "key": "expected_url_after_login",
+      "type": "string",
+      "placeholder": "e.g., https://www.lottemart.vn/home",
+      "label": "Expected URL After Login"
+    }
+  ]
+}
+
+

@@ -50,6 +50,9 @@
                     },
                     "expected_result": {
                       "type": "string"
+                    },
+                    "automatable": {
+                      "type": "string"
                     }
                   },
                   "additionalProperties": false,
@@ -62,7 +65,8 @@
                     "progress",
                     "priority",
                     "steps_to_execute",
-                    "expected_result"
+                    "expected_result",
+                    "automatable"
                   ]
                 }
               }

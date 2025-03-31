@@ -1,0 +1,41 @@
+{
+  "type": "json_schema",
+  "json_schema": {
+    "name": "field_requirements",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "code": {
+            "type": "string",
+            "description": "The code snippet that will be generated based on the input fields"
+        },
+        "fields": {
+          "type": "array",
+          "description": "List of fields to be included in the form in order to produce accurate playwright testing code",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "key": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "placeholder": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": ["label", "key", "type", "placeholder"]
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": ["fields"]
+    },
+    "strict": true
+  }
+}
