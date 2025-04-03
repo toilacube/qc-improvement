@@ -7,20 +7,12 @@ from settings import settings
 from langchain_google_genai import ChatGoogleGenerativeAI
 from openai import OpenAI
 
-'''
-- Input: Requirements
-- Ouput: Test case scenarios:
-    + A structure table
-    + 
-
-
-'''
 
 class LLMFactory:
     @staticmethod
     def create(
         provider: Optional[str] = None,
-        temperature: float = 0,
+        temperature: float = 0.5,
         streaming: bool = True,
     ):
         """

@@ -1,0 +1,155 @@
+{
+  "overall": "The web UI provides a login interface for Lotte Mart's online shopping platform. Users can log in using their registered account (email/phone and password) or via an OTP sent to their email/phone. Alternative login methods include Zalo, Google, Kakao Talk, and Apple ID. Users can switch between login methods using tabs ('Tài khoản' and 'Bằng OTP'). There's a link to recover forgotten passwords and another link for new users to register ('Đăng ký'). A language selector is available at the top right, offering Vietnamese, Korean, and English. The interface is visually divided, with branding on the left and the login form on the right. Overall usability seems standard for a login page, providing multiple authentication options. Accessibility appears considered with clear labels and standard form elements, though full testing (screen reader, keyboard navigation) is recommended. Potential improvements could include clearer error handling feedback and visual loading indicators during submission.",
+  "widgets": [
+    {
+      "name": "LOTTE MART Logo",
+      "position": "Top Left",
+      "description": "Displays the Lotte Mart brand logo in the header.",
+      "type": "image"
+    },
+    {
+      "name": "Language Selector",
+      "position": "Top Right",
+      "description": "A dropdown menu that allows users to select the interface language. Options shown include Tiếng Việt, 한국어, and English. Clicking it reveals the language options.",
+      "type": "dropdown"
+    },
+    {
+      "name": "LOTTE MART Logo (Large)",
+      "position": "Center Left Panel",
+      "description": "A larger version of the Lotte Mart brand logo prominently displayed on the left side of the page.",
+      "type": "image"
+    },
+    {
+      "name": "Slogan Text",
+      "position": "Center Left Panel",
+      "description": "Displays the slogan 'Kênh đi chợ Online của LOTTE Mart'.",
+      "type": "text"
+    },
+    {
+      "name": "Login Form",
+      "position": "Center Right Panel",
+      "description": "The main container for all login-related elements.",
+      "type": "form"
+    },
+    {
+      "name": "Đăng nhập Title",
+      "position": "Top of Login Form",
+      "description": "The title 'Đăng nhập' (Login) for the form.",
+      "type": "heading"
+    },
+    {
+      "name": "Tài Khoản Tab",
+      "position": "Top Left of Login Form Tabs",
+      "description": "A tab labeled 'Tài Khoản' (Account). Clicking this tab shows the fields for logging in with email/phone and password.",
+      "type": "tab"
+    },
+    {
+      "name": "Bằng OTP Tab",
+      "position": "Top Right of Login Form Tabs",
+      "description": "A tab labeled 'Bằng OTP' (By OTP). Clicking this tab shows the field for entering email/phone to receive an OTP.",
+      "type": "tab"
+    },
+    {
+      "name": "Email/Số điện thoại Input",
+      "position": "Inside Login Form",
+      "description": "Input field labeled 'Email/Số điện thoại*'. Requires the user to enter their registered email address or phone number. Marked as mandatory. Used for both standard login and OTP request.",
+      "type": "input"
+    },
+    {
+      "name": "Mật khẩu Input",
+      "position": "Inside Login Form (Tài Khoản Tab)",
+      "description": "Input field labeled 'Mật khẩu*' (Password). Requires the user to enter their password. Marked as mandatory. Includes an icon to toggle password visibility. Only visible when the 'Tài Khoản' tab is selected.",
+      "type": "input"
+    },
+    {
+      "name": "Password Visibility Toggle",
+      "position": "Inside Mật khẩu Input",
+      "description": "An icon button within the password field that allows the user to show or hide the entered password.",
+      "type": "button"
+    },
+    {
+      "name": "Quên mật khẩu? Link",
+      "position": "Inside Login Form (Tài Khoản Tab)",
+      "description": "A link labeled 'Quên mật khẩu?' (Forgot password?). Clicking this likely initiates the password recovery process. Only visible when the 'Tài Khoản' tab is selected.",
+      "type": "link"
+    },
+    {
+      "name": "Đăng nhập Button",
+      "position": "Inside Login Form (Tài Khoản Tab)",
+      "description": "Button labeled 'Đăng nhập' (Login). Submits the entered email/phone and password for authentication. Only visible when the 'Tài Khoản' tab is selected.",
+      "type": "button"
+    },
+    {
+      "name": "Gửi mã OTP Button",
+      "position": "Inside Login Form (Bằng OTP Tab)",
+      "description": "Button labeled 'Gửi mã OTP' (Send OTP code). Submits the entered email/phone to request an OTP for login. Only visible when the 'Bằng OTP' tab is selected.",
+      "type": "button"
+    },
+    {
+      "name": "Hoặc đăng nhập với Text",
+      "position": "Inside Login Form",
+      "description": "Text 'Hoặc đăng nhập với' (Or log in with) indicating alternative social login options.",
+      "type": "text"
+    },
+    {
+      "name": "Zalo Login Button",
+      "position": "Inside Login Form, Social Login Section",
+      "description": "Button with the Zalo logo and text 'Zalo'. Allows users to log in using their Zalo account.",
+      "type": "button"
+    },
+    {
+      "name": "Google Login Button",
+      "position": "Inside Login Form, Social Login Section",
+      "description": "Button with the Google logo and text 'Google'. Allows users to log in using their Google account.",
+      "type": "button"
+    },
+    {
+      "name": "Kakao Talk Login Button",
+      "position": "Inside Login Form, Social Login Section",
+      "description": "Button with the Kakao Talk logo and text 'Kakao Talk'. Allows users to log in using their Kakao Talk account.",
+      "type": "button"
+    },
+    {
+      "name": "Apple ID Login Button",
+      "position": "Inside Login Form, Social Login Section",
+      "description": "Button with the Apple logo and text 'Apple ID'. Allows users to log in using their Apple ID.",
+      "type": "button"
+    },
+    {
+      "name": "Registration Prompt Text",
+      "position": "Bottom of Login Form",
+      "description": "Text 'Quý khách chưa có tài khoản?' (Don't have an account yet?).",
+      "type": "text"
+    },
+    {
+      "name": "Đăng ký Link",
+      "position": "Bottom Right of Login Form",
+      "description": "A link labeled 'Đăng ký' (Register). Navigates the user to the account registration page.",
+      "type": "link"
+    },
+    {
+      "name": "Tiếng Việt Language Option",
+      "position": "Inside Language Selector Dropdown",
+      "description": "Option to select Vietnamese language. Represented by the Vietnamese flag and text 'Tiếng Việt'.",
+      "type": "option"
+    },
+    {
+      "name": "한국어 Language Option",
+      "position": "Inside Language Selector Dropdown",
+      "description": "Option to select Korean language. Represented by the South Korean flag and text '한국어'.",
+      "type": "option"
+    },
+    {
+      "name": "English Language Option",
+      "position": "Inside Language Selector Dropdown",
+      "description": "Option to select English language. Represented by the UK flag and text 'English'.",
+      "type": "option"
+    },
+    {
+      "name": "OTP Helper Text",
+      "position": "Inside Login Form (Bằng OTP Tab)",
+      "description": "Helper text providing instructions and notes for OTP login, including advice for VinaPhone users and mentioning SPEED L registration.",
+      "type": "text"
+    }
+  ]
+}

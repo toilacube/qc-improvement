@@ -1,0 +1,513 @@
+user_request: 
+    Based on some common rules and the project knowledge bases please generate test cases for the following user request: Please generate detail test cases:
+    ## Common rules: # Basic UI Style Guide Rules (Inferred from Lotte Mart Product Page)
+
+This document outlines common UI styling rules based on the visual analysis of the Lotte Mart product page. These serve as a baseline for maintaining visual consistency.
+
+## 1. Color Palette
+
+*   **Primary Action Color (`Brand Red`):** Used for key actions like "Add to Cart", "Accept Cookies", highlighting important navigation ("Danh Mục"), selected states (image thumbnail border), and badges ("MỚI"). (Approximate Hex: `#E52E37` - based on visual guess, needs confirmation).
+*   **Primary Text Color:** Black or a very dark grey (e.g., `#212529`) used for body text, product titles, prices, labels.
+*   **Secondary Text Color/Icon Color:** Medium-dark grey (e.g., `#6c757d`) used for secondary information, default icons (search, user, cart, share, wishlist), inactive navigation text.
+*   **Background Color (Main):** White (`#FFFFFF`).
+*   **Background Color (Subtle/Sections):** Very light grey (e.g., `#F8F9FA`) potentially used for the header background, quantity selector buttons, secondary action buttons (wishlist).
+*   **Background Color (Footer/Banner):** Dark grey/near-black (e.g., `#343a40`) for contrasting banners like the cookie notice.
+*   **Text Color on Primary Background:** White (`#FFFFFF`) used on red buttons/backgrounds.
+*   **Text Color on Dark Background:** White (`#FFFFFF`) used on the cookie banner.
+*   **Border Color:** Light grey (e.g., `#CED4DA` or slightly lighter) used for input fields, inactive thumbnails, potentially dividing lines.
+
+## 2. Typography
+
+*   **Font Family:** A clean, readable sans-serif font appears to be used throughout (e.g., Roboto, Lato, Open Sans - specific font needs confirmation).
+*   **Product Title (Heading 1 Equivalent):**
+    *   Font Size: Large (e.g., 24px - 28px).
+    *   Font Weight: Bold.
+    *   Color: Primary Text Color.
+*   **Price:**
+    *   Font Size: Large (similar or slightly larger than Product Title, e.g., 26px - 30px).
+    *   Font Weight: Bold.
+    *   Color: Primary Text Color.
+*   **Section Headings ("Mô tả ngắn", "Số lượng", "Sản phẩm gợi ý"):**
+    *   Font Size: Medium-Large (e.g., 18px - 20px).
+    *   Font Weight: Bold.
+    *   Color: Primary Text Color.
+*   **Body Text / Descriptions:**
+    *   Font Size: Standard (e.g., 14px - 16px).
+    *   Font Weight: Regular.
+    *   Color: Primary Text Color.
+    *   Line Height: Adequate for readability (e.g., 1.5).
+*   **Button Text:**
+    *   Font Size: Standard (e.g., 14px - 16px).
+    *   Font Weight: Medium or Bold.
+    *   Color: White (on Primary Red), Primary Text Color (on light backgrounds - less common).
+*   **Link Text:**
+    *   Font Size: Standard (same as body text).
+    *   Font Weight: Regular.
+    *   Color: Primary Text Color (or a dedicated Link Color, often blue, but appears black/dark grey here).
+    *   Decoration: None by default; likely underlines on hover (needs confirmation). The "Xem thêm" link follows this pattern.
+*   **Input Field Text:**
+    *   Font Size: Standard.
+    *   Font Weight: Regular.
+    *   Color: Primary Text Color.
+*   **Navigation Text:**
+    *   Font Size: Standard.
+    *   Font Weight: Medium or Regular.
+    *   Color: White (on Red background), Secondary Text Color (default state).
+
+## 3. Buttons
+
+*   **Primary Action Button ("Thêm vào giỏ hàng", "Đã hiểu"):**
+    *   Background: `Brand Red`.
+    *   Text Color: White.
+    *   Padding: Generous horizontal and vertical padding.
+    *   Border: None.
+    *   Border Radius: Slightly rounded corners (e.g., 4px - 6px).
+    *   Font Weight: Medium or Bold.
+*   **Secondary/Icon Buttons (Wishlist, Compare, Quantity +/-):**
+    *   Background: Very Light Grey.
+    *   Icon/Text Color: Secondary Text Color (Dark Grey).
+    *   Padding: Balanced padding around icon/text.
+    *   Border: Thin, Light Grey border or none (relying on background contrast).
+    *   Border Radius: Slightly rounded corners (similar to primary) or potentially square (for +/-).
+
+## 4. Links
+
+*   **Standard Links:** Blend with body text color (Primary Text Color). Underline likely appears on hover.
+*   **Navigation Links:** Follow specific navigation styling (see Header/Nav Bar rules).
+
+## 5. Forms & Inputs
+
+*   **Text Input (Search, Quantity):**
+    *   Background: White or Very Light Grey (Search).
+    *   Text Color: Primary Text Color.
+    *   Border: Thin, Light Grey border.
+    *   Border Radius: Slightly rounded corners.
+    *   Padding: Adequate internal padding.
+    *   Placeholder Text Color: Secondary Text Color (Medium-dark grey).
+
+## 6. Layout & Spacing
+
+*   **Consistency:** Maintain consistent spacing (margins/padding) between elements and sections.
+*   **Whitespace:** Utilize ample whitespace to avoid clutter and improve readability.
+*   **Alignment:** Elements within sections should be consistently aligned (e.g., left-aligned text, centered elements where appropriate).
+*   **Responsiveness:** (Assumption) The layout should adapt gracefully to different screen sizes, although specific rules require testing/design specs.
+
+**Note:** These rules are inferred from a single static image. Interactive states (hover, focus, active, disabled), specific pixel values, font names, and exact color codes would need to be confirmed from design specifications or browser inspection tools.,
+    ## Requirements: # LOTTE MART Login Page - Detailed Requirements Document
+
+## Overview
+This document outlines the detailed requirements for the LOTTE MART login page. The interface allows users to authenticate using various methods including traditional account login with email/phone and password, OTP, and third-party login options.
+
+## Page Components and Functionality
+
+**No.** | **Zone** | **Field** | **Detail Description**
+--------|----------|-----------|----------------------
+1 | Header | LOTTE MART Logo | **Field type**: Image<br>**Position**: Top Left<br>**Functionality**: Serves as a visual identifier for the brand<br>**Action**: Redirects user to the homepage when clicked
+2 | Header | Language Selection Dropdown | **Field type**: Single select dropdown<br>**Position**: Top Right<br>**Default display**: Flag icon of currently selected language<br>**Functionality**: Allows users to change the website's display language
+3 | Main Content | Login Form Container | **Field type**: Container (div)<br>**Position**: Center Right<br>**Style**: White background with appropriate padding and shadow
+4 | Login Form | Login Method Tabs | **Field type**: Tab group<br>**Position**: Inside Login Form, Top<br>**Tab options**:<br>- "Tài Khoản" (Account)<br>- "Bằng OTP" (OTP)<br>**Functionality**: Toggles between login methods
+5 | Login Form<br>(Account Tab) | Email/Phone Input Field | **Field type**: Text input<br>**Position**: Inside Login Form<br>**Validation**: Required field<br>**Placeholder text**: "Email address or phone number"<br>**Validation rules**: Must be valid email format or phone number format
+6 | Login Form<br>(Account Tab) | Password Input Field | **Field type**: Password input<br>**Position**: Inside Login Form, below Email/Phone field<br>**Validation**: Required field<br>**Features**: Toggle button to show/hide password text<br>**Placeholder text**: "Password"<br>**Validation rules**: Must have at least 8 characters
+7 | Login Form<br>(Account Tab) | Forgot Password Link | **Field type**: Hyperlink<br>**Position**: Inside Login Form, below Password field<br>**Text**: "Forgot Password?"<br>**Action**: Redirects to password recovery page
+8 | Login Form<br>(Account Tab) | Login Button | **Field type**: Button (Primary)<br>**Position**: Inside Login Form, below Forgot Password link<br>**Text**: "Login"<br>**Action**: Submits credentials to authentication API
+9 | Login Form | Login with Zalo Button | **Field type**: Button (Secondary)<br>**Position**: Inside Login Form, Social Login section<br>**Text**: "Login with Zalo"<br>**Icon**: Zalo logo<br>**Action**: Initiates OAuth flow with Zalo
+10 | Login Form | Login with Google Button | **Field type**: Button (Secondary)<br>**Position**: Inside Login Form, Social Login section<br>**Text**: "Login with Google"<br>**Icon**: Google logo<br>**Action**: Initiates OAuth flow with Google
+11 | Login Form | Login with Kakao Talk Button | **Field type**: Button (Secondary)<br>**Position**: Inside Login Form, Social Login section<br>**Text**: "Login with Kakao Talk"<br>**Icon**: Kakao Talk logo<br>**Action**: Initiates OAuth flow with Kakao Talk
+12 | Login Form | Login with Apple ID Button | **Field type**: Button (Secondary)<br>**Position**: Inside Login Form, Social Login section<br>**Text**: "Login with Apple ID"<br>**Icon**: Apple logo<br>**Action**: Initiates OAuth flow with Apple
+13 | Login Form<br>(OTP Tab) | Phone Number Input | **Field type**: Text input<br>**Position**: Inside Login Form, OTP tab<br>**Validation**: Required field<br>**Placeholder text**: "Phone Number"<br>**Validation rules**: Must be valid phone number format
+14 | Login Form<br>(OTP Tab) | Send OTP Button | **Field type**: Button<br>**Position**: Inside Login Form, OTP tab<br>**Text**: "Send OTP"<br>**Action**: Sends OTP to provided phone number
+15 | Login Form<br>(OTP Tab) | OTP Input Field | **Field type**: Text input or segmented OTP input<br>**Position**: Inside Login Form, OTP tab<br>**Validation**: Required field<br>**Placeholder text**: "Enter OTP"<br>**Validation rules**: Must be numeric, correct length
+16 | Login Form<br>(OTP Tab) | OTP Timer Display | **Field type**: Text display<br>**Position**: Inside Login Form, OTP tab, near OTP field<br>**Functionality**: Displays countdown timer showing remaining validity time for OTP<br>**Initial value**: "03:00" (3 minutes)<br>**Behavior**: Counts down second by second<br>**Expiry action**: Displays "OTP Expired" message and enables "Resend OTP" option
+17 | Login Form<br>(OTP Tab) | Verify OTP Button | **Field type**: Button (Primary)<br>**Position**: Inside Login Form, OTP tab<br>**Text**: "Verify & Login"<br>**Action**: Verifies OTP and logs user in
+18 | Login Form | Register Link | **Field type**: Hyperlink<br>**Position**: Inside Login Form, Bottom<br>**Text**: "Don't have an account? Register"<br>**Action**: Redirects to the registration page
+
+## Error Handling and Validation
+
+### Field Validation
+1. **Email/Phone Field**:
+   - Cannot be empty
+   - Must match email format (user@domain.com) or phone format depending on input
+   - Error message displays beneath field upon validation failure
+
+2. **Password Field**:
+   - Cannot be empty
+   - Must have at least 8 characters
+   - Error message displays beneath field upon validation failure
+   - Error message should be specific: "Password must be at least 8 characters long"
+
+3. **OTP Field**:
+   - Cannot be empty
+   - Must be numeric
+   - Must match expected length (typically 6 digits)
+   - Error message displays beneath field upon validation failure
+   - OTP is valid for 3 minutes (180 seconds) from time of issue
+
+### API Error Handling
+- Invalid credentials: Display appropriate error message above login form
+- Account locked: Display message with account recovery options
+- Service unavailable: Display system error message with retry option
+- Network timeout: Display connection error with retry option
+- OTP expired: Display "OTP has expired. Please request a new one" message
+
+## UI/UX Requirements
+
+### Responsive Design
+- Login form maintains proper layout across desktop, tablet, and mobile screen sizes
+- Minimum width: 320px (mobile)
+- Maximum width: 480px (form container)
+
+### Accessibility
+- All form fields have proper labels and ARIA attributes
+- Tab order follows logical sequence
+- Color contrast meets WCAG AA standards
+- Error messages are screen-reader friendly
+
+### Security Features
+- Password field masking with visibility toggle
+- Automatic session timeout after period of inactivity
+- CAPTCHA integration for repeated failed login attempts (optional requirement)
+- Secure connection (HTTPS) required
+- OTP expires after 3 minutes for security purposes
+
+## OTP Functionality
+- OTP is sent to user's phone number via SMS
+- OTP is valid for exactly 3 minutes (180 seconds)
+- A countdown timer displays remaining validity time
+- User must receive, enter, and submit the OTP within the 3-minute window
+- After expiration, user must request a new OTP
+- System should enforce OTP expiration on both client and server side
+
+## Localization
+- Support for multiple languages through language selector
+- Default language detection based on browser settings
+- Text elements should be stored in language resource files for easy translation
+
+## Revision History
+- Initial document creation: April 1, 2025
+- Updated with OTP expiration time and password requirements: April 1, 2025, 
+    ## UI story board: # **Web UI Widget Captioning – Login UI**  
+
+This section describes the detailed elements of the **Lotte Mart Login UI**, covering both **account-based login** and **OTP login** options.  
+
+---
+
+## **1. Header Section**  
+
+### **1-1 Lotte Mart Logo (Top Left)**  
+- The official Lotte Mart logo functions as a **navigational element**, typically linking to the homepage.  
+
+### **1-2 Language/Region Selector (Top Right)**  
+- A dropdown menu allowing users to **select their preferred language or region**.  
+- The selected flag represents the **current language/region setting** (e.g., Vietnamese).  
+
+---
+
+## **2. Login Form Section**  
+
+The login UI provides **two login methods**, accessible via **tab navigation**:  
+
+### **2-1 [Tài Khoản] Tab (Account Login)**  
+- The default tab selected for **email or phone number login with a password**.  
+
+### **2-2 [Bằng OTP] Tab (OTP Login)**  
+- The alternative login tab that allows users to **log in using a One-Time Password (OTP)**.  
+- Switching to this tab updates the form to display OTP-related fields.  
+
+---
+
+## **3. Account Login Components** *(Displayed when "Tài Khoản" Tab is Selected)*  
+
+### **3-1 Email/Phone Number Input Field**  
+- A required text field labeled **"Email/Số điện thoại*"** where users enter their registered email or phone number.  
+- The asterisk (*) indicates that this is a **mandatory field**.  
+
+### **3-2 Password Input Field**  
+- A required password field labeled **"Mật khẩu*"** for entering the user's password.  
+- **Lock icon** present to indicate **secure input**.  
+
+### **3-3 Show/Hide Password Icon (Eye Icon)**  
+- A **toggle button** within the password field to **show or hide** the entered password.  
+
+### **3-4 [Quên mật khẩu?] Link ("Forgot Password?")**  
+- A clickable text link directing users to the **password recovery page**.  
+
+### **3-5 [Đăng nhập] Button ("Login")**  
+- The **primary call-to-action button** that submits the login form.  
+
+---
+
+## **4. OTP Login Components** *(Displayed when "Bằng OTP" Tab is Selected)*  
+
+### **4-1 Email/Phone Number Input Field**  
+- A required text field labeled **"Email/Số điện thoại*"** for users to enter their registered contact information.  
+
+### **4-2 OTP Instructions Text**  
+- **Guidance message** for OTP retrieval, including:  
+  - "If you are using **VinaPhone**, please select Email to receive the OTP verification code."  
+  - "You can use the **Phone number/Email registered at SPEED L** to log in."  
+
+### **4-3 [Gửi mã OTP] Button ("Send OTP")**  
+- The **primary action button** that sends a one-time password to the user's email or phone number.  
+
+---
+
+## **5. Alternative Login Methods (Social Login Section)**  
+
+### **5-1 Social Login Title ("Hoặc đăng nhập với")**  
+- A section that introduces **alternative login options** using social media accounts.  
+
+### **5-2 Social Login Buttons** *(Displayed Below Login Form)*  
+Users can log in using:  
+- **Zalo** *(Zalo logo button)*  
+- **Google** *(Google logo button)*  
+- **Kakao Talk** *(Kakao Talk logo button)*  
+- **Apple ID** *(Apple logo button)*  
+
+---
+
+## **6. Registration Section**  
+
+### **6-1 [Đăng ký] Link ("Register")**  
+- A text link labeled **"Quý khách chưa có tài khoản? Đăng ký"** *(“Don't have an account? Register”)*.  
+- Redirects users to the **account registration page**.  
+
+---
+
+## **7. Overall Web UI Interaction Summary**  
+
+- **User Journey:**  
+  - The login UI provides a **clear, structured experience**, allowing users to log in via **email/password, OTP, or social login**.  
+  - Switching between **account login and OTP login** is handled via **tab navigation**.  
+
+- **Usability Factors:**  
+  - **Clear labels, intuitive input fields, and call-to-action buttons** improve ease of use.  
+  - The **social login section** offers alternative authentication options.  
+
+- **Accessibility Considerations:**  
+  - **Keyboard navigation** should be supported for **input fields, buttons, and tab selection**.  
+  - **Screen reader compatibility** for form labels, placeholders, and error messages enhances inclusivity.  
+
+- **Potential UX Improvements:**  
+  - Adding **real-time validation** for incorrect email formats or invalid phone numbers.  
+  - Providing **feedback messages** (e.g., "OTP sent successfully") when users request an OTP.  
+  - Implementing **visual indicators** (e.g., active tab highlights) for better navigation clarity.  
+
+This structured breakdown ensures a **seamless and user-friendly login experience** while maintaining **accessibility and usability best practices**. 🚀  
+
+    ## Figma design{'overall': "The web UI provides a login interface for Lotte Mart's online shopping platform. Users can log in using their registered account (email/phone and password) or via an OTP sent to their email/phone. Alternative login methods include Zalo, Google, Kakao Talk, and Apple ID. Users can switch between login methods using tabs ('Tài khoản' and 'Bằng OTP'). There's a link to recover forgotten passwords and another link for new users to register ('Đăng ký'). A language selector is available at the top right, offering Vietnamese, Korean, and English. The interface is visually divided, with branding on the left and the login form on the right. Overall usability seems standard for a login page, providing multiple authentication options. Accessibility appears considered with clear labels and standard form elements, though full testing (screen reader, keyboard navigation) is recommended. Potential improvements could include clearer error handling feedback and visual loading indicators during submission.", 'widgets': [{'name': 'LOTTE MART Logo', 'position': 'Top Left', 'description': 'Displays the Lotte Mart brand logo in the header.', 'type': 'image'}, {'name': 'Language Selector', 'position': 'Top Right', 'description': 'A dropdown menu that allows users to select the interface language. Options shown include Tiếng Việt, 한국어, and English. Clicking it reveals the language options.', 'type': 'dropdown'}, {'name': 'LOTTE MART Logo (Large)', 'position': 'Center Left Panel', 'description': 'A larger version of the Lotte Mart brand logo prominently displayed on the left side of the page.', 'type': 'image'}, {'name': 'Slogan Text', 'position': 'Center Left Panel', 'description': "Displays the slogan 'Kênh đi chợ Online của LOTTE Mart'.", 'type': 'text'}, {'name': 'Login Form', 'position': 'Center Right Panel', 'description': 'The main container for all login-related elements.', 'type': 'form'}, {'name': 'Đăng nhập Title', 'position': 'Top of Login Form', 'description': "The title 'Đăng nhập' (Login) for the form.", 'type': 'heading'}, {'name': 'Tài Khoản Tab', 'position': 'Top Left of Login Form Tabs', 'description': "A tab labeled 'Tài Khoản' (Account). Clicking this tab shows the fields for logging in with email/phone and password.", 'type': 'tab'}, {'name': 'Bằng OTP Tab', 'position': 'Top Right of Login Form Tabs', 'description': "A tab labeled 'Bằng OTP' (By OTP). Clicking this tab shows the field for entering email/phone to receive an OTP.", 'type': 'tab'}, {'name': 'Email/Số điện thoại Input', 'position': 'Inside Login Form', 'description': "Input field labeled 'Email/Số điện thoại*'. Requires the user to enter their registered email address or phone number. Marked as mandatory. Used for both standard login and OTP request.", 'type': 'input'}, {'name': 'Mật khẩu Input', 'position': 'Inside Login Form (Tài Khoản Tab)', 'description': "Input field labeled 'Mật khẩu*' (Password). Requires the user to enter their password. Marked as mandatory. Includes an icon to toggle password visibility. Only visible when the 'Tài Khoản' tab is selected.", 'type': 'input'}, {'name': 'Password Visibility Toggle', 'position': 'Inside Mật khẩu Input', 'description': 'An icon button within the password field that allows the user to show or hide the entered password.', 'type': 'button'}, {'name': 'Quên mật khẩu? Link', 'position': 'Inside Login Form (Tài Khoản Tab)', 'description': "A link labeled 'Quên mật khẩu?' (Forgot password?). Clicking this likely initiates the password recovery process. Only visible when the 'Tài Khoản' tab is selected.", 'type': 'link'}, {'name': 'Đăng nhập Button', 'position': 'Inside Login Form (Tài Khoản Tab)', 'description': "Button labeled 'Đăng nhập' (Login). Submits the entered email/phone and password for authentication. Only visible when the 'Tài Khoản' tab is selected.", 'type': 'button'}, {'name': 'Gửi mã OTP Button', 'position': 'Inside Login Form (Bằng OTP Tab)', 'description': "Button labeled 'Gửi mã OTP' (Send OTP code). Submits the entered email/phone to request an OTP for login. Only visible when the 'Bằng OTP' tab is selected.", 'type': 'button'}, {'name': 'Hoặc đăng nhập với Text', 'position': 'Inside Login Form', 'description': "Text 'Hoặc đăng nhập với' (Or log in with) indicating alternative social login options.", 'type': 'text'}, {'name': 'Zalo Login Button', 'position': 'Inside Login Form, Social Login Section', 'description': "Button with the Zalo logo and text 'Zalo'. Allows users to log in using their Zalo account.", 'type': 'button'}, {'name': 'Google Login Button', 'position': 'Inside Login Form, Social Login Section', 'description': "Button with the Google logo and text 'Google'. Allows users to log in using their Google account.", 'type': 'button'}, {'name': 'Kakao Talk Login Button', 'position': 'Inside Login Form, Social Login Section', 'description': "Button with the Kakao Talk logo and text 'Kakao Talk'. Allows users to log in using their Kakao Talk account.", 'type': 'button'}, {'name': 'Apple ID Login Button', 'position': 'Inside Login Form, Social Login Section', 'description': "Button with the Apple logo and text 'Apple ID'. Allows users to log in using their Apple ID.", 'type': 'button'}, {'name': 'Registration Prompt Text', 'position': 'Bottom of Login Form', 'description': "Text 'Quý khách chưa có tài khoản?' (Don't have an account yet?).", 'type': 'text'}, {'name': 'Đăng ký Link', 'position': 'Bottom Right of Login Form', 'description': "A link labeled 'Đăng ký' (Register). Navigates the user to the account registration page.", 'type': 'link'}, {'name': 'Tiếng Việt Language Option', 'position': 'Inside Language Selector Dropdown', 'description': "Option to select Vietnamese language. Represented by the Vietnamese flag and text 'Tiếng Việt'.", 'type': 'option'}, {'name': '한국어 Language Option', 'position': 'Inside Language Selector Dropdown', 'description': "Option to select Korean language. Represented by the South Korean flag and text '한국어'.", 'type': 'option'}, {'name': 'English Language Option', 'position': 'Inside Language Selector Dropdown', 'description': "Option to select English language. Represented by the UK flag and text 'English'.", 'type': 'option'}, {'name': 'OTP Helper Text', 'position': 'Inside Login Form (Bằng OTP Tab)', 'description': 'Helper text providing instructions and notes for OTP login, including advice for VinaPhone users and mentioning SPEED L registration.', 'type': 'text'}]}
+
+system_prompt: # Instruction to AI: Generate STRICTLY UI/Visual Test Cases
+
+## 1. Role Definition
+
+You are an **Expert QA Engineer** with deep specialization in **UI/Visual Testing** across Web, Android, and iOS platforms. Your expertise includes:
+
+- **Visual design principles**
+- **Interaction design** (visual feedback aspects)
+- **Usability heuristics** (related to visual clarity and layout)
+- **WCAG accessibility standards** (visual aspects)
+- **Cross-platform visual consistency verification**
+- **Responsive design testing**
+
+## 2. Core Task
+
+Your primary task is to generate **comprehensive, detailed, and structured UI/Visual test cases** based **SOLELY** on the **Project Knowledge bases**, including:
+
+- User Stories
+- Business Requirements
+- UI Descriptions
+- Storyboards
+
+⚠️ **Crucially, your focus MUST remain strictly on the User Interface (UI) and Visual aspects.**  
+🚫 **DO NOT generate test cases that verify:**
+
+- Functional logic
+- Business rules
+- Data processing
+- API responses
+- Backend behavior
+
+---
+
+## 3. Mandatory Output Format: JSON
+
+The output **MUST** be a valid **JSON array**, where each element is a JSON object representing a single **UI/Visual test case**.
+
+Each test case object **MUST adhere strictly** to the following structure:
+
+```json
+{
+  "type": "json_schema",
+  "json_schema": {
+    "name": "test_case_response",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "user_stories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "test_cases": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": { "type": "string" },
+                    "scenario_name": { "type": "string" },
+                    "steps_to_execute": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "description": "Steps to execute the test case, focusing on UI interaction and observation. Add number index before each step"
+                      }
+                    },
+                    "expected_result": {
+                      "type": "string",
+                      "description": "Expected UI/Visual outcome ONLY (e.g., element style, position, visibility, state change appearance)."
+                    },
+                    "screen": { "type": "string" },
+                    "priority": { "type": "string" },
+                    "automatable": { "type": "string" }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "scenario_name",
+                    "steps_to_execute",
+                    "expected_result",
+                    "screen",
+                    "priority",
+                    "automatable"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": ["title", "description", "test_cases"]
+          }
+        },
+        "key_considerations": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["user_stories", "key_considerations"],
+      "additionalProperties": false
+    },
+    "strict": true
+  }
+}
+```
+# 4. Detailed Instructions & Scope (Apply to ALL UI/Visual Test Case Generation)
+
+## Analyze Inputs
+Meticulously parse all provided **User Stories, Requirements, UI Descriptions, and Storyboards**. Extract every explicit and implicit UI/Visual detail. Map test cases back to specific stories/requirements using relevant references.   
+
+## Generate Test Cases Covering:
+
+### A. Visual Verification (Reference Design Specifications if provided)
+- **Layout/Composition:** Verify element alignment, spacing (padding/margins), positioning relative to container and other elements. Check grid adherence.   
+- **Typography:** Verify font family, size, weight, style, line height, and color for all text elements (headers, body, labels, links, placeholders, etc.).   
+- **Color Palette:** Verify exact color codes (e.g., HEX, RGBA) for backgrounds, text, borders, icons, states (hover, focus, active, disabled), and feedback elements.   
+- **Imagery/Iconography:** Verify correct assets, aspect ratio, resolution, clarity, and consistent icon style. Ensure appropriate alt text exists for accessibility (visual check of attribute presence).   
+- **Visual Consistency:** Ensure styling of common elements (buttons, inputs, cards, modals) is uniform across the feature/application according to designs/style guides.   
+- **Field Count/Presence:** Verify the correct number and presence of expected UI elements (fields, buttons, columns, text blocks, images) based on UI descriptions/designs.   
+
+### B. Interaction & UI Visual Feedback
+- **Element Interactivity Appearance:** Test all interactive elements (buttons, links, inputs, checkboxes, radios, dropdowns, toggles, sliders, pickers, etc.). Ensure they appear operable (e.g., not visually broken, have expected pointer) and show appropriate visual feedback upon interaction.   
+- **Visual State Changes:** Verify all specified visual states for interactive elements are displayed correctly:
+  - Default appearance   
+  - Hover appearance (e.g., color change, underline)   
+  - Focus appearance (e.g., outline visible)   
+  - Active/Pressed appearance   
+  - Disabled appearance (e.g., greyed out, non-interactive pointer)   
+  - Selected appearance (for checkboxes, radios, etc.)   
+- **Visual Feedback Mechanisms:** Verify the presence, visibility, and correct appearance of:
+  - Loading indicators (spinners, skeletons are displayed when expected)   
+  - Success/error/warning/info messages (verify they appear, have correct styling/color, and content rendering. Do not test the logic triggering them.)   
+  - Inline validation feedback (verify error/success styles appear on fields, e.g., red border. Do not test validation logic.)   
+- **Navigation Element Appearance:** Verify visual aspects of navigation elements (menus, tabs, breadcrumbs, back buttons, links) - are they present, styled correctly, and show expected hover/active states?   
+- **Forms Appearance:** Verify:
+  - Input fields render correctly with expected visual attributes (placeholders visible, correct type visually implied e.g., password dots).   
+  - Display of error messages (correct styling, positioning) when validation criteria (per UI spec) are not met. Do not test the validation logic itself.   
+  - Visual feedback on submission (e.g., button enters loading state, confirmation message appears). Do not test if data was actually submitted.   
+- **Mobile Gesture Visual Feedback:** Verify UI responds visually as expected to standard gestures where specified (e.g., element highlights on tap, visual feedback during swipe).   
+- **Transitions/Animations:** Verify visual smoothness, performance (no jank), and non-disruptiveness of UI animations.   
+
+### C. Usability (Visual & Layout Aspects)
+- **Visual Clarity & Intuitiveness:** Test whether controls, labels, and information hierarchy are visually clear and arranged logically according to the design.   
+- **Visual Efficiency:** Assess if the layout allows users to visually locate primary elements easily.   
+- **Error Message Presentation:** Verify that error messages, when displayed, are visually prominent, clearly associated with the cause, and legibly styled. Do not test the functional accuracy or guidance content.   
+- **Task Flow Visuals:** Verify the visual continuity and layout consistency across steps in a multi-step process as defined in storyboards/designs.   
+
+### D. Responsiveness & Adaptability (Visual Layout Changes)
+- Generate specific test cases for defined breakpoints/viewports (e.g., mobile, tablet, desktop).   
+- If not defined, use standard ones:  
+  - `<768px` (Mobile)  
+  - `768px-1024px` (Tablet)  
+  - `>1024px` (Desktop)   
+- Verify layout adjustments (reflow, element resizing/hiding/stacking), navigation visual changes (e.g., burger menu appears), and image scaling/cropping across viewports. Focus strictly on the visual rendering.   
+- Include tests for visual layout in **portrait and landscape orientations** on mobile/tablet where applicable.   
+
+### E. Accessibility (Visual & UI Structure Aspects)
+- **Keyboard Navigation Focus Indicator:** Verify all interactive elements receive a visible focus indicator when navigated to via keyboard. Verify the focus order appears logical based on visual layout.   
+- **Screen Reader Related UI Checks:**
+  - Verify meaningful images have an `alt` attribute present in the HTML (visual inspection or dev tools). Do not test screen reader output.   
+  - Verify form controls have associated `<label>` tags or `aria-label`/`aria-labelledby` attributes present. Do not test screen reader output.   
+- **Color Contrast:** Ensure text/background and UI component/state contrast ratios appear to meet minimums based on design specifications or standard guidelines (e.g., 4.5:1 for normal text, 3:1 for large text/graphics).   
+- **Text Resizing:** Verify UI layout remains usable and text readable (no major overlaps or content cut-offs) when browser base text size is increased to 200%.   
+- **Target Size:** Verify clickable/tappable elements appear to meet minimum size/spacing requirements per design specs or guidelines (visual estimation).   
+
+---
+
+# 5. Test Case Design Principles & Rules
+
+## Granularity
+- Each test case should have a **single, clear UI/Visual objective**.  
+- Steps must be **atomic** (one action/observation per step).   
+
+## Completeness
+- Ensure comprehensive coverage of all UI/Visual aspects mentioned in the provided inputs.   
+
+## Scenarios
+Generate tests for:
+- **Positive Scenarios:** Verifying standard appearance and visual feedback.   
+- **Negative Scenarios (UI/Visual):** Verifying error states are displayed correctly (e.g., error message styling, field borders), elements appear correctly when disabled.   
+- **Edge Cases (UI/Visual):** Verifying visual layout with empty states, how UI renders with unusually long text or large images, visual appearance of disabled states, visual representation of zero results.   
+
+## ID Format
+- Strictly follow `[AP-PX-NNN]`, starting `NNN` at `001` for phase `P1` (UI Testing) and incrementing sequentially.   
+
+## Avoid Redundancy
+- Consolidate test cases verifying the **exact same visual element/style/behavior** across different user flows unless context significantly changes appearance.   
+
+## Determine Automation Potential (automatable field)
+- **Yes:** If the test case relies on verifiable UI element properties (CSS, position, attributes), visual regression testing tools can be used, predictable visual states.   
+- **No:** If the test relies heavily on subjective aesthetic assessment (subtle layout nuances, animation smoothness) requiring human eyes.   
+- **Partial:** If some steps involve checking specific visual properties (automatable) but others require subjective human judgment (manual).   
+
+## EXPLICIT EXCLUSION
+DO NOT generate tests that:
+- Verify data is saved correctly to a database.
+- Check API responses.
+- Validate business logic calculations.
+- Confirm functional outcomes of user actions.
+- Test performance beyond visual rendering.
+
+---
+
+# 6. Final Review (AI Self-Correction)
+Before outputting the final JSON:
+✅ Verify JSON validity.  
+✅ Ensure strict adherence to Section 3 structure.  
+✅ Cover all UI/Visual instructions and scope areas.  
+✅ Map test cases to UI/Visual details in provided artifacts.  
+✅ Review for clarity, precision, and lack of ambiguity.   
+

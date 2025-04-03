@@ -1,0 +1,883 @@
+{
+    "model_used": "gemini-2.5-pro-exp-03-25",
+    "tokens_used": 17211,
+    "prompt_tokens": 6774,
+    "completion_tokens": 10437,
+    "result": {
+        "key_considerations": [
+            "Test data management is crucial, requiring valid/invalid accounts, specific phone numbers (e.g., VinaPhone for OTP email advice), and test accounts for social logins.",
+            "Testing third-party integrations (Social Logins, OTP provider) requires careful setup and depends on external service availability.",
+            "Performance testing requires specific tools (e.g., JMeter, k6) and environment setup.",
+            "Security testing needs specialized tools and expertise (e.g., OWASP ZAP, Burp Suite).",
+            "Accessibility testing often involves manual checks using assistive technology (screen readers) and validation tools.",
+            "Cross-browser and cross-device testing is essential for verifying UI consistency and responsiveness.",
+            "Localization testing requires verification of all UI text elements in Vietnamese, Korean, and English.",
+            "Ensure server-side validation mirrors client-side validation rules.",
+            "CAPTCHA implementation (if added for failed attempts) will require specific test cases, possibly manual.",
+            "Session timeout testing requires specific configuration and potentially long-running tests."
+        ],
+        "user_stories": [
+            {
+                "description": "As a user, I want to log in to my LOTTE MART account using my registered email/phone number and password so that I can access my profile and shopping features.",
+                "title": "User Login with Account Credentials",
+                "test_cases": [
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P5-01]",
+                        "expected_result": "User is successfully logged in and redirected to the homepage or user dashboard.",
+                        "scenario_name": "Verify Successful Login with Valid Email and Password",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Ensure the 'Tài Khoản' tab is selected.",
+                            "3. Enter a valid registered email address in the 'Email/Số điện thoại' field.",
+                            "4. Enter the corresponding valid password in the 'Mật khẩu' field.",
+                            "5. Click the 'Đăng nhập' button."
+                        ],
+                        "testing_type": "Smoke",
+                        "system": "Authentication",
+                        "menu": "Login - Account Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-01]",
+                        "expected_result": "User is successfully logged in and redirected to the homepage or user dashboard.",
+                        "scenario_name": "Verify Successful Login with Valid Phone Number and Password",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Ensure the 'Tài Khoản' tab is selected.",
+                            "3. Enter a valid registered phone number in the 'Email/Số điện thoại' field.",
+                            "4. Enter the corresponding valid password in the 'Mật khẩu' field.",
+                            "5. Click the 'Đăng nhập' button."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - Account Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-02]",
+                        "expected_result": "An appropriate error message is displayed beneath the 'Email/Số điện thoại' field (e.g., 'Invalid email or phone number format'). Login is prevented.",
+                        "scenario_name": "Verify Login Attempt with Invalid Email Format",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Ensure the 'Tài Khoản' tab is selected.",
+                            "3. Enter an invalid email format (e.g., 'test@domain', 'test.com') in the 'Email/Số điện thoại' field.",
+                            "4. Enter a valid password.",
+                            "5. Click the 'Đăng nhập' button."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - Account Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-03]",
+                        "expected_result": "An appropriate error message is displayed beneath the 'Email/Số điện thoại' field (e.g., 'Invalid email or phone number format'). Login is prevented.",
+                        "scenario_name": "Verify Login Attempt with Invalid Phone Number Format",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Ensure the 'Tài Khoản' tab is selected.",
+                            "3. Enter an invalid phone number format (e.g., '123', 'abcdefgh') in the 'Email/Số điện thoại' field.",
+                            "4. Enter a valid password.",
+                            "5. Click the 'Đăng nhập' button."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - Account Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-04]",
+                        "expected_result": "An appropriate error message is displayed (e.g., 'Invalid credentials', 'Incorrect email/phone or password'). Login is prevented.",
+                        "scenario_name": "Verify Login Attempt with Valid Email/Phone and Incorrect Password",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Ensure the 'Tài Khoản' tab is selected.",
+                            "3. Enter a valid registered email or phone number.",
+                            "4. Enter an incorrect password.",
+                            "5. Click the 'Đăng nhập' button."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - Account Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-05]",
+                        "expected_result": "An appropriate error message is displayed beneath the password field (e.g., 'Password must be at least 8 characters long'). Login is prevented.",
+                        "scenario_name": "Verify Login Attempt with Password Less Than 8 Characters",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Ensure the 'Tài Khoản' tab is selected.",
+                            "3. Enter a valid registered email or phone number.",
+                            "4. Enter a password with fewer than 8 characters (e.g., 'pass123').",
+                            "5. Click the 'Đăng nhập' button."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - Account Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-06]",
+                        "expected_result": "Error messages are displayed beneath both the 'Email/Số điện thoại' and 'Mật khẩu' fields indicating they are required. Login is prevented.",
+                        "scenario_name": "Verify Login Attempt with Empty Email/Phone and Password Fields",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Ensure the 'Tài Khoản' tab is selected.",
+                            "3. Leave the 'Email/Số điện thoại' field empty.",
+                            "4. Leave the 'Mật khẩu' field empty.",
+                            "5. Click the 'Đăng nhập' button."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - Account Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-07]",
+                        "expected_result": "Password text visibility toggles between masked (dots) and plain text.",
+                        "scenario_name": "Verify Password Visibility Toggle Functionality",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Ensure the 'Tài Khoản' tab is selected.",
+                            "3. Enter text into the 'Mật khẩu' field.",
+                            "4. Observe that the text is initially masked.",
+                            "5. Click the 'eye' icon inside the password field.",
+                            "6. Observe that the text becomes visible.",
+                            "7. Click the 'eye' icon again.",
+                            "8. Observe that the text is masked again."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "UI Component",
+                        "menu": "Login - Account Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-08]",
+                        "expected_result": "User is redirected to the password recovery page.",
+                        "scenario_name": "Verify 'Forgot Password?' Link Navigation",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Ensure the 'Tài Khoản' tab is selected.",
+                            "3. Click the 'Quên mật khẩu?' link."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Navigation",
+                        "menu": "Login - Account Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via performance testing tools)",
+                        "progress": "Ready",
+                        "id": "[AP-P6-01]",
+                        "expected_result": "System handles concurrent login requests without significant degradation. Response time remains within acceptable limits (e.g., < 3 seconds). Low error rate.",
+                        "scenario_name": "Verify Account Login Performance Under Load",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Simulate a high number of concurrent users (e.g., 100 users) attempting to log in using valid credentials via a performance testing tool (e.g., JMeter).",
+                            "2. Monitor server resource usage (CPU, Memory) and response times."
+                        ],
+                        "testing_type": "Performance",
+                        "system": "Authentication",
+                        "menu": "Login - Account Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via automated security testing tools)",
+                        "progress": "Ready",
+                        "id": "[AP-P7-01]",
+                        "expected_result": "The application handles the input safely. No SQL errors are returned, and the login fails with a standard error message (e.g., 'Invalid credentials'). The application should not reveal database errors.",
+                        "scenario_name": "Verify Protection Against SQL Injection in Email/Phone Field",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Ensure the 'Tài Khoản' tab is selected.",
+                            "3. Enter a common SQL injection payload (e.g., `' OR '1'='1`) into the 'Email/Số điện thoại' field.",
+                            "4. Enter any password.",
+                            "5. Click the 'Đăng nhập' button.",
+                            "6. Observe the response."
+                        ],
+                        "testing_type": "Security",
+                        "system": "Authentication",
+                        "menu": "Login - Account Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via automated security testing tools)",
+                        "progress": "Ready",
+                        "id": "[AP-P7-02]",
+                        "expected_result": "The application handles the input safely. No script execution occurs. Login fails with a standard error message. Input should be sanitized or rejected.",
+                        "scenario_name": "Verify Protection Against Cross-Site Scripting (XSS) in Input Fields",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Ensure the 'Tài Khoản' tab is selected.",
+                            "3. Enter a common XSS payload (e.g., `<script>alert('XSS')</script>`) into the 'Email/Số điện thoại' field.",
+                            "4. Enter the payload into the 'Mật khẩu' field.",
+                            "5. Click the 'Đăng nhập' button (or attempt interaction after input).",
+                            "6. Observe if any script executes."
+                        ],
+                        "testing_type": "Security",
+                        "system": "Authentication",
+                        "menu": "Login - Account Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via automation - check redirect URL)",
+                        "progress": "Ready",
+                        "id": "[AP-P8-01]",
+                        "expected_result": "User successfully logs in and is redirected to the expected post-login destination (e.g., homepage or dashboard).",
+                        "scenario_name": "Verify End-to-End Account Login Flow",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Select the 'Tài Khoản' tab.",
+                            "3. Enter valid credentials.",
+                            "4. Click 'Đăng nhập'.",
+                            "5. Verify the URL and content of the page loaded after successful login."
+                        ],
+                        "testing_type": "System",
+                        "system": "Authentication Flow",
+                        "menu": "Login - Account Tab"
+                    }
+                ]
+            },
+            {
+                "description": "As a user, I want to log in using a One-Time Password (OTP) sent to my registered email or phone number, so I don't need to remember my password.",
+                "title": "User Login with OTP",
+                "test_cases": [
+                    {
+                        "automatable": "✅ Yes (Requires OTP interception/mocking or manual input)",
+                        "progress": "Ready",
+                        "id": "[AP-P5-02]",
+                        "expected_result": "User receives OTP, enters it correctly within the time limit, and is successfully logged in and redirected.",
+                        "scenario_name": "Verify Successful Login with Valid OTP",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Click the 'Bằng OTP' tab.",
+                            "3. Enter a valid registered phone number or email in the 'Email/Số điện thoại' field.",
+                            "4. Click the 'Gửi mã OTP' button.",
+                            "5. Wait to receive the OTP.",
+                            "6. Enter the received OTP in the OTP input field (appears after sending).",
+                            "7. Click the 'Verify & Login' (or equivalent) button before the timer expires."
+                        ],
+                        "testing_type": "Smoke",
+                        "system": "Authentication",
+                        "menu": "Login - OTP Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-09]",
+                        "expected_result": "The login form switches from Account fields (Password, Forgot Password) to OTP fields (Send OTP button, helper text).",
+                        "scenario_name": "Verify Switching Between 'Tài Khoản' and 'Bằng OTP' Tabs",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Observe the default 'Tài Khoản' tab fields.",
+                            "3. Click the 'Bằng OTP' tab.",
+                            "4. Verify that the Password and Forgot Password fields are hidden.",
+                            "5. Verify that the 'Gửi mã OTP' button and OTP helper text are visible.",
+                            "6. Click the 'Tài Khoản' tab again.",
+                            "7. Verify the original fields are restored."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "UI Component",
+                        "menu": "Login - Tabs"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation, may need OTP mocking)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-10]",
+                        "expected_result": "An OTP is successfully sent to the registered phone number via SMS. A confirmation message might appear (e.g., 'OTP sent successfully'). The OTP input field and timer appear.",
+                        "scenario_name": "Verify Requesting OTP with Valid Phone Number",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Click the 'Bằng OTP' tab.",
+                            "3. Enter a valid registered phone number.",
+                            "4. Click 'Gửi mã OTP'."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - OTP Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation, may need OTP mocking)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-11]",
+                        "expected_result": "An OTP is successfully sent to the registered email address. A confirmation message might appear. The OTP input field and timer appear.",
+                        "scenario_name": "Verify Requesting OTP with Valid Email Address",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Click the 'Bằng OTP' tab.",
+                            "3. Enter a valid registered email address.",
+                            "4. Click 'Gửi mã OTP'."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - OTP Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-12]",
+                        "expected_result": "An error message is displayed indicating the phone number is not registered or invalid. OTP is not sent.",
+                        "scenario_name": "Verify Requesting OTP with Unregistered/Invalid Phone Number",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Click the 'Bằng OTP' tab.",
+                            "3. Enter an unregistered or invalid phone number.",
+                            "4. Click 'Gửi mã OTP'."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - OTP Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (Requires OTP interception/mocking or manual input)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-13]",
+                        "expected_result": "An error message is displayed indicating the OTP is incorrect. Login is prevented.",
+                        "scenario_name": "Verify Login Attempt with Incorrect OTP",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page and select 'Bằng OTP' tab.",
+                            "2. Enter a valid registered phone/email and click 'Gửi mã OTP'.",
+                            "3. Receive the actual OTP.",
+                            "4. Enter an incorrect OTP (e.g., change a digit) in the OTP input field.",
+                            "5. Click 'Verify & Login'."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - OTP Tab"
+                    },
+                    {
+                        "automatable": "⏳ Partial (Timer UI yes, expiration logic needs server check or long wait)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-14]",
+                        "expected_result": "The OTP timer starts from 03:00 and counts down. After 3 minutes, an 'OTP Expired' message is displayed, the 'Verify & Login' button may become disabled, and a 'Resend OTP' option might appear/enable.",
+                        "scenario_name": "Verify OTP Timer Countdown and Expiry Behavior",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page and select 'Bằng OTP' tab.",
+                            "2. Enter a valid registered phone/email and click 'Gửi mã OTP'.",
+                            "3. Observe the OTP timer starting at '03:00' and counting down.",
+                            "4. Wait for 3 minutes without entering the OTP.",
+                            "5. Verify the expiry message and state changes after 3 minutes."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - OTP Tab"
+                    },
+                    {
+                        "automatable": "⏳ Partial (Requires waiting for expiry, then entering OTP)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-15]",
+                        "expected_result": "An error message indicating the OTP has expired is displayed. Login is prevented, even if the originally received OTP is entered.",
+                        "scenario_name": "Verify Login Attempt with Expired OTP",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page and select 'Bằng OTP' tab.",
+                            "2. Enter a valid registered phone/email and click 'Gửi mã OTP'.",
+                            "3. Receive the OTP but do not enter it immediately.",
+                            "4. Wait for more than 3 minutes until the timer expires.",
+                            "5. Enter the originally received (now expired) OTP.",
+                            "6. Click 'Verify & Login'."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - OTP Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation, may need OTP mocking)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-16]",
+                        "expected_result": "A new OTP is sent. The timer resets to 03:00. The user can then log in with the new OTP.",
+                        "scenario_name": "Verify 'Resend OTP' Functionality",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page and select 'Bằng OTP' tab.",
+                            "2. Enter a valid registered phone/email and click 'Gửi mã OTP'.",
+                            "3. Wait for the 'Resend OTP' option to become available (either immediately or after expiry/delay).",
+                            "4. Click 'Resend OTP'.",
+                            "5. Verify a new OTP is sent and the timer restarts."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - OTP Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (via performance testing tools, needs OTP service mocking/stubbing)",
+                        "progress": "Ready",
+                        "id": "[AP-P6-02]",
+                        "expected_result": "System handles concurrent OTP requests and verifications efficiently. OTP delivery time and verification response time remain within acceptable limits.",
+                        "scenario_name": "Verify OTP Login Performance Under Load",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Simulate a high number of concurrent users requesting and verifying OTPs using a performance testing tool.",
+                            "2. Monitor OTP generation/delivery times and verification endpoint response times."
+                        ],
+                        "testing_type": "Performance",
+                        "system": "Authentication",
+                        "menu": "Login - OTP Tab"
+                    },
+                    {
+                        "automatable": "⏳ No (Requires manual check or complex server-side validation)",
+                        "progress": "Ready",
+                        "id": "[AP-P7-03]",
+                        "expected_result": "The server rejects OTP verification attempts made after the 3-minute validity period, even if the client-side timer fails or is bypassed.",
+                        "scenario_name": "Verify Server-Side Enforcement of OTP Expiry",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Request an OTP.",
+                            "2. Note the OTP value and the time.",
+                            "3. Wait for > 3 minutes.",
+                            "4. Attempt to submit the verification request directly via API call (bypassing UI timer) using the expired OTP.",
+                            "5. Verify the API response indicates failure due to expiry."
+                        ],
+                        "testing_type": "Security",
+                        "system": "Authentication",
+                        "menu": "Login - OTP Tab"
+                    },
+                    {
+                        "automatable": "✅ Yes (Requires OTP interception/mocking or manual input)",
+                        "progress": "Ready",
+                        "id": "[AP-P8-02]",
+                        "expected_result": "User successfully requests, receives, enters OTP, and logs in, finally landing on the expected post-login page.",
+                        "scenario_name": "Verify End-to-End OTP Login Flow",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Select the 'Bằng OTP' tab.",
+                            "3. Enter a valid phone/email and request OTP.",
+                            "4. Enter the received valid OTP.",
+                            "5. Click 'Verify & Login'.",
+                            "6. Verify the user is redirected to the correct page after login."
+                        ],
+                        "testing_type": "System",
+                        "system": "Authentication Flow",
+                        "menu": "Login - OTP Tab"
+                    }
+                ]
+            },
+            {
+                "description": "As a user, I want to use alternative login methods like Zalo, Google, Kakao Talk, or Apple ID for convenience.",
+                "title": "User Login with Social Accounts",
+                "test_cases": [
+                    {
+                        "automatable": "⏳ Partial (Can automate clicking, but OAuth flow requires interaction/mocking)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-17]",
+                        "expected_result": "Clicking the 'Login with Zalo' button initiates the Zalo OAuth authentication flow, redirecting the user to Zalo's login/authorization screen.",
+                        "scenario_name": "Verify Initiation of Zalo Login Flow",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Locate the 'Login with Zalo' button.",
+                            "3. Click the button.",
+                            "4. Verify redirection to the Zalo authentication URL."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - Social Login"
+                    },
+                    {
+                        "automatable": "⏳ Partial (Can automate clicking, but OAuth flow requires interaction/mocking)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-18]",
+                        "expected_result": "Clicking the 'Login with Google' button initiates the Google OAuth authentication flow.",
+                        "scenario_name": "Verify Initiation of Google Login Flow",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Click the 'Login with Google' button.",
+                            "3. Verify redirection to the Google authentication URL."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - Social Login"
+                    },
+                    {
+                        "automatable": "⏳ Partial (Can automate clicking, but OAuth flow requires interaction/mocking)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-19]",
+                        "expected_result": "Clicking the 'Login with Kakao Talk' button initiates the Kakao Talk OAuth authentication flow.",
+                        "scenario_name": "Verify Initiation of Kakao Talk Login Flow",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Click the 'Login with Kakao Talk' button.",
+                            "3. Verify redirection to the Kakao Talk authentication URL."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - Social Login"
+                    },
+                    {
+                        "automatable": "⏳ Partial (Can automate clicking, but OAuth flow requires interaction/mocking)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-20]",
+                        "expected_result": "Clicking the 'Login with Apple ID' button initiates the Apple OAuth authentication flow.",
+                        "scenario_name": "Verify Initiation of Apple ID Login Flow",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Click the 'Login with Apple ID' button.",
+                            "3. Verify redirection to the Apple authentication URL."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - Social Login"
+                    },
+                    {
+                        "automatable": "❌ No (Requires real social account interaction and complex validation)",
+                        "progress": "Ready",
+                        "id": "[AP-P8-03]",
+                        "expected_result": "After successful authentication and authorization via the social provider (e.g., Google), the user is redirected back to LOTTE MART and logged in.",
+                        "scenario_name": "Verify End-to-End Social Login Flow (e.g., Google)",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Click the 'Login with Google' button.",
+                            "3. Complete the Google authentication/authorization flow using valid test credentials.",
+                            "4. Verify redirection back to LOTTE MART.",
+                            "5. Verify the user is logged in on the LOTTE MART site."
+                        ],
+                        "testing_type": "System",
+                        "system": "Authentication Flow",
+                        "menu": "Login - Social Login"
+                    },
+                    {
+                        "automatable": "❌ No (Requires manually cancelling the social login flow)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-21]",
+                        "expected_result": "User is redirected back to the LOTTE MART login page without being logged in. An appropriate message might be shown, or the page state remains unchanged.",
+                        "scenario_name": "Verify Handling of Cancelled Social Login Flow",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Click a social login button (e.g., 'Login with Google').",
+                            "3. On the social provider's authentication screen, cancel the login/authorization process.",
+                            "4. Verify the user is returned to the LOTTE MART login page and is not logged in."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Authentication",
+                        "menu": "Login - Social Login"
+                    }
+                ]
+            },
+            {
+                "description": "As a user, I want to change the website's language using the language selector.",
+                "title": "Language Selection",
+                "test_cases": [
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-22]",
+                        "expected_result": "The text on the login page elements (labels, buttons, links) changes to Vietnamese.",
+                        "scenario_name": "Verify Language Change to Vietnamese",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Click the language selector dropdown in the top right.",
+                            "3. Select 'Tiếng Việt'.",
+                            "4. Verify key text elements (e.g., 'Đăng nhập', 'Mật khẩu', 'Quên mật khẩu?') are displayed in Vietnamese."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Localization",
+                        "menu": "Header"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-23]",
+                        "expected_result": "The text on the login page elements changes to Korean.",
+                        "scenario_name": "Verify Language Change to Korean",
+                        "priority": "Low",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Click the language selector dropdown.",
+                            "3. Select '한국어'.",
+                            "4. Verify key text elements are displayed in Korean (requires expected translations)."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Localization",
+                        "menu": "Header"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-24]",
+                        "expected_result": "The text on the login page elements changes to English.",
+                        "scenario_name": "Verify Language Change to English",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Click the language selector dropdown.",
+                            "3. Select 'English'.",
+                            "4. Verify key text elements (e.g., 'Login', 'Password', 'Forgot Password?') are displayed in English."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Localization",
+                        "menu": "Header"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation, check selected state)",
+                        "progress": "Ready",
+                        "id": "[AP-P8-04]",
+                        "expected_result": "The selected language persists across page reloads or navigation away and back to the login page (if persistence is implemented via cookies/local storage).",
+                        "scenario_name": "Verify Language Selection Persistence",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Change the language (e.g., to English).",
+                            "3. Reload the page (F5).",
+                            "4. Verify the language remains English.",
+                            "5. Navigate away (e.g., click logo to go to homepage) and then back to the login page.",
+                            "6. Verify the language is still English."
+                        ],
+                        "testing_type": "System",
+                        "system": "Localization",
+                        "menu": "Header"
+                    }
+                ]
+            },
+            {
+                "description": "As a user or potential user, I want to navigate to other key areas like the homepage or registration page from the login page.",
+                "title": "Login Page Navigation Links",
+                "test_cases": [
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-25]",
+                        "expected_result": "User is redirected to the LOTTE MART homepage.",
+                        "scenario_name": "Verify Header Logo Redirects to Homepage",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Click the LOTTE MART logo in the header (top left)."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Navigation",
+                        "menu": "Header"
+                    },
+                    {
+                        "automatable": "✅ Yes (via UI automation)",
+                        "progress": "Ready",
+                        "id": "[AP-P4-26]",
+                        "expected_result": "User is redirected to the account registration page.",
+                        "scenario_name": "Verify 'Register' Link Navigation",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Click the 'Đăng ký' link at the bottom of the form."
+                        ],
+                        "testing_type": "Functional",
+                        "system": "Navigation",
+                        "menu": "Login - Registration Section"
+                    }
+                ]
+            },
+            {
+                "description": "As a user on any device, I want the login page to display correctly and be usable.",
+                "title": "Responsive Design and UI",
+                "test_cases": [
+                    {
+                        "automatable": "❌ No (Requires manual visual inspection)",
+                        "progress": "Ready",
+                        "id": "[AP-P8-05]",
+                        "expected_result": "The login form elements (inputs, buttons, tabs, links) render correctly without overlapping or breaking layout on a standard desktop viewport.",
+                        "scenario_name": "Verify Layout on Desktop Viewport",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Open the login page in a desktop browser.",
+                            "2. Verify all elements are visible, aligned, and readable.",
+                            "3. Check spacing and overall presentation against the design."
+                        ],
+                        "testing_type": "System",
+                        "system": "UI/UX",
+                        "menu": "Login Page"
+                    },
+                    {
+                        "automatable": "❌ No (Requires manual visual inspection)",
+                        "progress": "Ready",
+                        "id": "[AP-P8-06]",
+                        "expected_result": "The login form adapts to the tablet viewport width. Elements reflow or resize appropriately without layout issues.",
+                        "scenario_name": "Verify Layout on Tablet Viewport",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Open the login page in a browser.",
+                            "2. Use browser developer tools to simulate a tablet viewport (e.g., 768px width).",
+                            "3. Verify layout, element visibility, and usability."
+                        ],
+                        "testing_type": "System",
+                        "system": "UI/UX",
+                        "menu": "Login Page"
+                    },
+                    {
+                        "automatable": "❌ No (Requires manual visual inspection)",
+                        "progress": "Ready",
+                        "id": "[AP-P8-07]",
+                        "expected_result": "The login form adapts to the mobile viewport width (minimum 320px). Elements are stacked or resized for vertical scrolling, ensuring readability and usability on small screens.",
+                        "scenario_name": "Verify Layout on Mobile Viewport (Minimum Width)",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Open the login page in a browser.",
+                            "2. Use browser developer tools to simulate a mobile viewport (e.g., 320px width).",
+                            "3. Verify layout, element visibility, font sizes, button sizes, and overall usability."
+                        ],
+                        "testing_type": "System",
+                        "system": "UI/UX",
+                        "menu": "Login Page"
+                    }
+                ]
+            },
+            {
+                "description": "As a user with disabilities, I want to be able to navigate and use the login page effectively using assistive technologies.",
+                "title": "Login Page Accessibility",
+                "test_cases": [
+                    {
+                        "automatable": "❌ No (Requires manual testing with keyboard)",
+                        "progress": "Ready",
+                        "id": "[AP-P8-08]",
+                        "expected_result": "Users can navigate through all interactive elements (logo, language selector, tabs, inputs, links, buttons) in a logical order using the Tab key. Enter/Space keys activate focused elements.",
+                        "scenario_name": "Verify Keyboard Navigation and Interaction",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the login page.",
+                            "2. Press the Tab key repeatedly to cycle through interactive elements.",
+                            "3. Verify the focus order is logical (e.g., top-to-bottom, left-to-right).",
+                            "4. Press Shift+Tab to navigate backwards.",
+                            "5. Use Enter/Space to activate buttons, links, and toggle password visibility when focused."
+                        ],
+                        "testing_type": "System",
+                        "system": "Accessibility",
+                        "menu": "Login Page"
+                    },
+                    {
+                        "automatable": "❌ No (Requires screen reader software)",
+                        "progress": "Ready",
+                        "id": "[AP-P8-09]",
+                        "expected_result": "Screen reader correctly announces labels for input fields, button text, link purposes, tab states, and error messages. Content is understandable when read aloud.",
+                        "scenario_name": "Verify Screen Reader Compatibility",
+                        "priority": "Medium",
+                        "steps_to_execute": [
+                            "1. Navigate to the login page using a screen reader (e.g., NVDA, JAWS, VoiceOver).",
+                            "2. Navigate through the elements.",
+                            "3. Verify accurate announcements for all interactive and informative elements.",
+                            "4. Trigger validation errors and verify error messages are announced."
+                        ],
+                        "testing_type": "System",
+                        "system": "Accessibility",
+                        "menu": "Login Page"
+                    },
+                    {
+                        "automatable": "⏳ Partial (Can use automated tools, but manual check needed)",
+                        "progress": "Ready",
+                        "id": "[AP-P8-10]",
+                        "expected_result": "Text and UI elements have sufficient color contrast against their backgrounds, meeting WCAG AA standards.",
+                        "scenario_name": "Verify Color Contrast",
+                        "priority": "Low",
+                        "steps_to_execute": [
+                            "1. Use browser extensions or online tools to check color contrast ratios for text, buttons, and links against their backgrounds.",
+                            "2. Manually inspect elements where tools might fail (e.g., text on images)."
+                        ],
+                        "testing_type": "System",
+                        "system": "Accessibility",
+                        "menu": "Login Page"
+                    }
+                ]
+            },
+            {
+                "description": "As a platform administrator, I want the login page to be secure against common threats.",
+                "title": "Login Page Security Hardening",
+                "test_cases": [
+                    {
+                        "automatable": "✅ Yes (Check page URL scheme)",
+                        "progress": "Ready",
+                        "id": "[AP-P7-04]",
+                        "expected_result": "The login page is served over HTTPS. The browser shows a valid SSL certificate (lock icon).",
+                        "scenario_name": "Verify Secure Connection (HTTPS)",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the LOTTE MART login page.",
+                            "2. Check the URL in the address bar starts with 'https://'.",
+                            "3. Check for a valid security certificate indicator in the browser."
+                        ],
+                        "testing_type": "Security",
+                        "system": "Platform Security",
+                        "menu": "Login Page"
+                    },
+                    {
+                        "automatable": "❌ No (Requires multiple failed attempts, depends on implementation)",
+                        "progress": "Draft",
+                        "id": "[AP-P7-05]",
+                        "expected_result": "After a specified number of failed login attempts (e.g., 3 or 5), a CAPTCHA challenge is presented, or the account is temporarily locked.",
+                        "scenario_name": "Verify Brute Force Protection (Rate Limiting / CAPTCHA)",
+                        "priority": "High",
+                        "steps_to_execute": [
+                            "1. Navigate to the login page ('Tài Khoản' tab).",
+                            "2. Enter a valid email/phone.",
+                            "3. Enter an incorrect password repeatedly (e.g., 6 times).",
+                            "4. Observe if a CAPTCHA appears or an account lockout message is displayed."
+                        ],
+                        "testing_type": "Security",
+                        "system": "Authentication",
+                        "menu": "Login - Account Tab"
+                    }
+                ]
+            }
+        ],
+        "test_case_properties": {
+            "id": {
+                "value": "ID"
+            },
+            "progress": {
+                "value": "Progress"
+            },
+            "testing_type": {
+                "value": "Testing Type"
+            },
+            "scenario_name": {
+                "value": "Scenario Name"
+            },
+            "menu": {
+                "value": "Menu"
+            },
+            "priority": {
+                "value": "Priority"
+            },
+            "expected_result": {
+                "value": "Expected Result"
+            },
+            "steps_to_execute": {
+                "value": "Steps to Execute"
+            },
+            "system": {
+                "value": "System"
+            },
+            "automatable": {
+                "value": "Automatable"
+            }
+        }
+    }
+}

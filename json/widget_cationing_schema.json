@@ -1,0 +1,40 @@
+{
+  "type": "json_schema",
+  "json_schema": {
+    "name": "widget_cationing_schema",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "widgets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "description": "The type of widget (its htlm tag), e.g., 'button', 'input', etc.",
+                "type": "string"
+              },
+              "position": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": ["name", "type", "position", "description"]
+          }
+        },
+        "overall": {
+          "type": "string"
+        }
+      },
+      "required": ["widgets", "overall"],
+      "additionalProperties": false
+    },
+    "strict": true
+  }
+}

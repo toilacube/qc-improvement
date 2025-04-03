@@ -1,0 +1,38 @@
+- Knowledge Base components:
+    + Requirements documents
+    + figma
+    + Story board (ppt)
+
+====> Test case scenarios
+
+ - figma (widget captioning) and initial_prompt can be updated to produce more effective output
+
+- Knowledge Base Summary:
+  + Requirements:
+    * Functional requirements
+    * Non-functional requirements (performance, security, etc.)
+    * Business rules and constraints
+    * Edge cases and limitations
+  
+  + User Interface:
+    * Widgets and components
+    * Screen flows and navigation paths
+    * Input validations
+    * Error states and messages
+    * Responsive behavior expectations
+  
+  + Functionalities:
+    * Core business processes
+    * API endpoints and integrations
+    * Data transformations
+    * Authentication and authorization rules
+    * Background processes
+
+=========> Need a function to normalize these Knowledges  
+
+From Knowledge base summary, now we have to generate:
+    - Test case story 
+    - UI testing 
+    - Functional testing
+
+

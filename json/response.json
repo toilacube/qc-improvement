@@ -1,142 +1,592 @@
 {
   "user_stories": [
     {
+      "title": "LOTTE MART Login Page UI Verification",
+      "description": "As a QA Engineer, I want to verify the visual presentation and layout of the LOTTE MART Login Page elements across different viewports and states, ensuring adherence to the specified requirements and design principles.",
       "test_cases": [
         {
+          "feature": "Login",
+          "scenario_name": "Verify Header Logo Visuals",
+          "automation": "Yes",
           "steps_to_execute": [
-            "1.  User is logged in.",
-            "2.  Click the 'Logout' button."
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Observe the header section."
           ],
-          "expected_result": "User is redirected to the login page or a generic logged-out state. The session is terminated.",
-          "automatable": "Yes (via UI automation and session verification)",
-          "id": "AP-P4-09",
-          "testing_type": "Functional",
-          "menu": "User Profile",
-          "system": "Authentication",
-          "priority": "High",
-          "progress": "Ready",
-          "scenario_name": "Verify Successful Logout"
+          "expected_result": "The LOTTE MART Logo image is displayed correctly in the Top Left position of the header.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-001",
+          "function": "Visuals"
         },
         {
+          "feature": "Login",
+          "scenario_name": "Verify Language Selection Dropdown Visuals",
+          "automation": "Yes",
           "steps_to_execute": [
-            "1.  User is logged in.",
-            "2.  Initiate logout process (e.g., click logout button).",
-            "3.  Immediately close the browser."
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Observe the header section."
           ],
-          "expected_result": "Upon reopening the browser, the user is not logged in. The session is terminated.",
-          "automatable": "Yes (using automation and session validation checks after browser restart)",
-          "id": "AP-P7-02",
-          "testing_type": "Security",
-          "menu": "User Profile",
-          "system": "Authentication",
-          "priority": "High",
-          "progress": "Ready",
-          "scenario_name": "Verify Session Termination After Logout and Browser Closure"
+          "expected_result": "A single select dropdown is displayed in the Top Right position of the header. It shows the flag icon of the currently selected language by default.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-002",
+          "function": "Visuals"
         },
         {
+          "feature": "Login",
+          "scenario_name": "Verify Login Form Container Visuals",
+          "automation": "Yes",
           "steps_to_execute": [
-            "1.  User is logged in.",
-            "2.  Attempt to access a protected resource after clicking 'logout'."
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Observe the main content area."
           ],
-          "expected_result": "The user is redirected to the login page, access is denied, and a login is required to access the protected resource.",
-          "automatable": "Yes (after logout, attempt to access a protected page via automation)",
-          "id": "AP-P4-10",
-          "testing_type": "Functional",
-          "menu": "User Profile",
-          "system": "Authentication",
-          "priority": "High",
-          "progress": "Ready",
-          "scenario_name": "Verify Access to Protected Resources After Logout"
+          "expected_result": "A container is displayed in the Center Right position. It has a white background, appropriate padding, and a subtle shadow effect as per design specifications.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-003",
+          "function": "Visuals"
         },
         {
+          "feature": "Login",
+          "scenario_name": "Verify Login Method Tabs Visuals and Default State",
+          "automation": "Yes",
           "steps_to_execute": [
-            "1.  User is logged in.",
-            "2.  Click the 'logout' button multiple times in quick succession."
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Observe the top section inside the Login Form container."
           ],
-          "expected_result": "The system handles multiple logout requests gracefully, and the user is logged out only once. No errors occur.",
-          "automatable": "Yes (can be automated using scripting tools to rapidly click the logout button)",
-          "id": "AP-P6-03",
-          "testing_type": "Performance",
-          "menu": "User Profile",
-          "system": "Authentication",
-          "priority": "Medium",
-          "progress": "Ready",
-          "scenario_name": "Verify Logout Process Under Load"
+          "expected_result": "A tab group is displayed with two options: \"T\u00e0i Kho\u1ea3n\" and \"B\u1eb1ng OTP\". The \"T\u00e0i Kho\u1ea3n\" tab should appear visually selected/active by default.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-004",
+          "function": "Visuals"
         },
         {
+          "feature": "Login",
+          "scenario_name": "Verify Login Method Tab Switching Visual State",
+          "automation": "Yes",
           "steps_to_execute": [
-            "1.  Log in.",
-            "2.  Log out.",
-            "3.  Immediately try to log in with the same credentials."
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Click on the \"B\u1eb1ng OTP\" tab.",
+            "3. Observe the visual state of the tabs.",
+            "4. Click back on the \"T\u00e0i Kho\u1ea3n\" tab.",
+            "5. Observe the visual state of the tabs."
           ],
-          "expected_result": "The user can log in successfully after logging out.",
-          "automatable": "Yes (using UI automation to log in and log out and then immediately log in again)",
-          "id": "AP-P5-03",
-          "testing_type": "Smoke",
-          "menu": "User Profile",
-          "system": "Authentication",
-          "priority": "High",
-          "progress": "Ready",
-          "scenario_name": "Verify Basic Logout and Login Functionality"
+          "expected_result": "When a tab is clicked, it should become visually active (e.g., highlighted background, underlined) and the other tab should become visually inactive.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-005",
+          "function": "Visuals"
         },
         {
+          "feature": "Login",
+          "scenario_name": "Verify Email/Phone Input Field Visuals (Account Tab)",
+          "automation": "Yes",
           "steps_to_execute": [
-            "1.  Log in.",
-            "2.  Log out.",
-            "3.  Navigate to the original page using the back button."
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Ensure the \"T\u00e0i Kho\u1ea3n\" tab is selected.",
+            "3. Observe the first input field."
           ],
-          "expected_result": "The user is redirected to the login page or a logged-out state, and cannot access the previously viewed content.",
-          "automatable": "No (Requires manual verification of the browser back button behavior)",
-          "id": "AP-P8-03",
-          "testing_type": "System",
-          "menu": "User Profile",
-          "system": "Authentication",
-          "priority": "Medium",
-          "progress": "Ready",
-          "scenario_name": "Verify Back Button Navigation After Logout"
+          "expected_result": "A text input field is displayed with the placeholder text \"Email address or phone number\". It should have the standard styling for input fields.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-006",
+          "function": "Account Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Password Input Field Visuals (Account Tab)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Ensure the \"T\u00e0i Kho\u1ea3n\" tab is selected.",
+            "3. Observe the second input field."
+          ],
+          "expected_result": "A password input field is displayed below the Email/Phone field with the placeholder text \"Password\". Input text should be masked by default. A toggle button/icon for showing/hiding the password text should be visible within or next to the field.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-007",
+          "function": "Account Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Password Visibility Toggle Visual Change",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Ensure the \"T\u00e0i Kho\u1ea3n\" tab is selected.",
+            "3. Enter text into the Password field.",
+            "4. Click the show/hide password toggle button.",
+            "5. Observe the input field and the toggle button icon.",
+            "6. Click the toggle button again.",
+            "7. Observe the input field and the toggle button icon."
+          ],
+          "expected_result": "Clicking the toggle should visually change the input from masked characters to plain text and update the toggle icon (e.g., eye-open to eye-closed). Clicking again should revert the visual state.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-008",
+          "function": "Account Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Forgot Password Link Visuals (Account Tab)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Ensure the \"T\u00e0i Kho\u1ea3n\" tab is selected.",
+            "3. Observe the link below the Password field."
+          ],
+          "expected_result": "A hyperlink with the text \"Forgot Password?\" is displayed below the Password field. It should have standard link styling.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-009",
+          "function": "Account Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Login Button Visuals (Account Tab)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Ensure the \"T\u00e0i Kho\u1ea3n\" tab is selected.",
+            "3. Observe the button below the Forgot Password link."
+          ],
+          "expected_result": "A primary button with the text \"Login\" is displayed. It should have the defined primary button styling.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-010",
+          "function": "Account Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Social Login Buttons Visuals (Zalo, Google, Kakao, Apple)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Observe the section below the primary Login button (or common area for both tabs)."
+          ],
+          "expected_result": "Four secondary buttons are displayed for social login: \"Login with Zalo\", \"Login with Google\", \"Login with Kakao Talk\", \"Login with Apple ID\". Each button should display its respective text and logo icon, and have consistent secondary button styling.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-011",
+          "function": "Social Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Register Link Visuals",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Observe the bottom area inside the Login Form container."
+          ],
+          "expected_result": "A hyperlink with the text \"Don't have an account? Register\" is displayed at the bottom of the form. It should have standard link styling.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-012",
+          "function": "Visuals"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Phone Number Input Visuals (OTP Tab)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Click the \"B\u1eb1ng OTP\" tab.",
+            "3. Observe the first input field."
+          ],
+          "expected_result": "A text input field is displayed with the placeholder text \"Phone Number\". It should have standard input field styling.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-013",
+          "function": "OTP Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Send OTP Button Visuals (OTP Tab)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Click the \"B\u1eb1ng OTP\" tab.",
+            "3. Observe the button next to or below the Phone Number input."
+          ],
+          "expected_result": "A button with the text \"Send OTP\" is displayed. It should have standard button styling (specify if primary or secondary based on design).",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-014",
+          "function": "OTP Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify OTP Input Field Visuals (OTP Tab)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Click the \"B\u1eb1ng OTP\" tab.",
+            "3. Enter a valid phone number and click \"Send OTP\".",
+            "4. Observe the OTP input field area (assuming it appears after sending OTP)."
+          ],
+          "expected_result": "An input field (either single text input or segmented input boxes) appears for OTP entry. It should have the placeholder text \"Enter OTP\".",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-015",
+          "function": "OTP Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify OTP Timer Display Visuals (Initial State)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Click the \"B\u1eb1ng OTP\" tab.",
+            "3. Enter a valid phone number and click \"Send OTP\".",
+            "4. Observe the OTP timer display area."
+          ],
+          "expected_result": "A text display element is visible near the OTP input field, showing the initial countdown time \"03:00\".",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-016",
+          "function": "OTP Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify OTP Timer Display Visuals (Countdown)",
+          "automation": "Partial",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Click the \"B\u1eb1ng OTP\" tab.",
+            "3. Enter a valid phone number and click \"Send OTP\".",
+            "4. Observe the OTP timer display over several seconds."
+          ],
+          "expected_result": "The timer display visually counts down second by second (e.g., \"02:59\", \"02:58\", ...). Requires visual check for smoothness/correct decrement.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-017",
+          "function": "OTP Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify OTP Timer Display Visuals (Expired State)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Click the \"B\u1eb1ng OTP\" tab.",
+            "3. Enter a valid phone number and click \"Send OTP\".",
+            "4. Wait for 3 minutes (180 seconds).",
+            "5. Observe the OTP timer display area."
+          ],
+          "expected_result": "After 3 minutes, the timer display changes to show an \"OTP Expired\" message or similar visual indication.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-018",
+          "function": "OTP Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Verify OTP Button Visuals (OTP Tab)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Click the \"B\u1eb1ng OTP\" tab.",
+            "3. Enter a valid phone number and click \"Send OTP\".",
+            "4. Observe the button for submitting the OTP."
+          ],
+          "expected_result": "A primary button with the text \"Verify & Login\" is displayed below the OTP input area. It should have the defined primary button styling.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-019",
+          "function": "OTP Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Input Field Focus State Visuals",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Click inside the Email/Phone input field.",
+            "3. Observe the field's border/outline.",
+            "4. Click inside the Password input field.",
+            "5. Observe the field's border/outline.",
+            "6. Switch to OTP tab, enter phone, send OTP.",
+            "7. Click inside the OTP input field.",
+            "8. Observe the field's border/outline."
+          ],
+          "expected_result": "When an input field receives focus (by clicking or tabbing), a visually distinct focus indicator (e.g., colored border, outline) should appear around the field, consistent with accessibility requirements.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-020",
+          "function": "Visuals"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Button Hover State Visuals",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Hover the mouse cursor over the \"Login\" button (Account Tab).",
+            "3. Observe its appearance.",
+            "4. Hover over one of the social login buttons.",
+            "5. Observe its appearance.",
+            "6. Hover over the \"Forgot Password?\" link.",
+            "7. Observe its appearance.",
+            "8. Switch to OTP tab, enter phone, send OTP.",
+            "9. Hover over the \"Verify & Login\" button.",
+            "10. Observe its appearance."
+          ],
+          "expected_result": "All interactive elements (buttons, links) should display a distinct visual hover state (e.g., background color change, text underline) when the mouse cursor is positioned over them.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-021",
+          "function": "Visuals"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Error Message Display Visuals (Account Tab - Empty Fields)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Ensure the \"T\u00e0i Kho\u1ea3n\" tab is selected.",
+            "3. Click the \"Login\" button without entering any credentials.",
+            "4. Observe the areas below the Email/Phone and Password fields."
+          ],
+          "expected_result": "Error messages (e.g., \"Cannot be empty\") are displayed directly beneath the corresponding input fields. The messages should have clear error styling (e.g., red text).",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-022",
+          "function": "Account Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Error Message Display Visuals (Account Tab - Invalid Password Length)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Ensure the \"T\u00e0i Kho\u1ea3n\" tab is selected.",
+            "3. Enter a valid email/phone.",
+            "4. Enter a password with fewer than 8 characters (e.g., \"12345\").",
+            "5. Click the \"Login\" button or click outside the field.",
+            "6. Observe the area below the Password field."
+          ],
+          "expected_result": "An error message \"Password must be at least 8 characters long\" is displayed directly beneath the Password field with clear error styling.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-023",
+          "function": "Account Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Error Message Display Visuals (OTP Tab - Empty Fields)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Click the \"B\u1eb1ng OTP\" tab.",
+            "3. Click \"Send OTP\" without entering a phone number.",
+            "4. Observe the area below the Phone Number field.",
+            "5. Enter a valid phone number, click \"Send OTP\".",
+            "6. Click \"Verify & Login\" without entering OTP.",
+            "7. Observe the area below the OTP field."
+          ],
+          "expected_result": "Error messages (e.g., \"Cannot be empty\") are displayed directly beneath the corresponding input fields (Phone, OTP) when actions are taken with empty fields. Messages have clear error styling.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-024",
+          "function": "OTP Login"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Login Form Layout on Mobile Viewport (<768px)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Resize the browser window width to less than 768px (e.g., 375px).",
+            "3. Observe the layout of all elements (Header, Form Container, Inputs, Buttons, Links)."
+          ],
+          "expected_result": "The layout adjusts correctly for mobile view. Elements should reflow or stack vertically as needed. The form container width respects the minimum 320px requirement. All elements remain visible and usable without horizontal scrolling.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-025",
+          "function": "Responsiveness"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Login Form Layout on Tablet Viewport (768px-1024px)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Resize the browser window width to between 768px and 1024px (e.g., 800px).",
+            "3. Observe the layout of all elements."
+          ],
+          "expected_result": "The layout adjusts correctly for tablet view. The form container remains centered (or adjusts as per design) and does not exceed its 480px max-width. Elements are well-spaced and readable.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-026",
+          "function": "Responsiveness"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Login Form Layout on Desktop Viewport (>1024px)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Ensure the browser window width is greater than 1024px (e.g., 1280px).",
+            "3. Observe the layout of all elements."
+          ],
+          "expected_result": "The layout is stable and correctly displayed for desktop view. The form container is positioned Center Right and does not exceed its 480px max-width. All elements are aligned and spaced correctly.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-027",
+          "function": "Responsiveness"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Keyboard Navigation Focus Indicator Visibility",
+          "automation": "Partial",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Press the 'Tab' key repeatedly.",
+            "3. Observe each interactive element (Logo link, Language dropdown, Tabs, Inputs, Links, Buttons)."
+          ],
+          "expected_result": "Each interactive element receives a clearly visible focus indicator (outline) when navigated to via the keyboard. The focus order should follow a logical visual sequence (e.g., top-to-bottom, left-to-right).",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-028",
+          "function": "Accessibility"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Color Contrast (Visual Check)",
+          "automation": "No",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Visually inspect the contrast between text elements (labels, placeholders, links, button text, error messages) and their backgrounds.",
+            "3. Visually inspect the contrast between UI component boundaries (input borders, button backgrounds) and their surroundings.",
+            "4. Check elements in different states (hover, focus)."
+          ],
+          "expected_result": "The color contrast between text and background, and between UI components and their background, appears sufficient to meet WCAG AA guidelines (visually assess if it seems clear and readable).",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-029",
+          "function": "Accessibility"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Text Resizing (200%) Layout Stability",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Use browser settings to increase the text size to 200%.",
+            "3. Observe the overall layout of the page, focusing on the login form."
+          ],
+          "expected_result": "The layout remains usable. Text should reflow and remain readable without significant overlapping of elements or content being cut off. Some layout changes are acceptable, but usability should be maintained.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-030",
+          "function": "Accessibility"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Input Labels Association (Visual Check using DevTools)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Right-click on the Email/Phone input field and 'Inspect Element'.",
+            "3. Check if there is an associated <label> tag (using 'for' attribute matching the input's 'id') or an 'aria-label'/'aria-labelledby' attribute.",
+            "4. Repeat for Password input.",
+            "5. Switch to OTP tab, send OTP.",
+            "6. Repeat for Phone Number input and OTP input."
+          ],
+          "expected_result": "Each input field (Email/Phone, Password, OTP Phone, OTP code) should have a programmatically associated label (<label> or ARIA attribute) visible in the DOM structure.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-031",
+          "function": "Accessibility"
+        },
+        {
+          "feature": "Login",
+          "scenario_name": "Verify Image Alt Text Presence (Visual Check using DevTools)",
+          "automation": "Yes",
+          "steps_to_execute": [
+            "1. Navigate to the LOTTE MART Login page.",
+            "2. Right-click on the LOTTE MART Logo image and 'Inspect Element'.",
+            "3. Check if the <img> tag has a non-empty 'alt' attribute."
+          ],
+          "expected_result": "The LOTTE MART Logo image tag includes a descriptive 'alt' attribute in the HTML structure.",
+          "type": "UI",
+          "status": "TO DO",
+          "mennu": "Login Page",
+          "id": "AP-P1-032",
+          "function": "Accessibility"
         }
-      ],
-      "title": "Verify Logout Functionality",
-      "description": "Ensure that the logout process correctly terminates the user's session and redirects them to the appropriate page."
+      ]
     }
   ],
   "key_considerations": [
-    "Session management",
-    "Redirection after logout",
-    "Security of the logout process",
-    "Handling concurrent requests",
-    "Browser caching"
+    "Verify visual consistency across different browsers (Chrome, Firefox, Safari, Edge).",
+    "Check visual rendering on different operating systems (Windows, macOS, iOS, Android) if applicable.",
+    "Ensure pixel-perfect alignment and spacing against design mockups, if available.",
+    "Validate visual appearance in both Light and Dark modes if supported.",
+    "Confirm responsiveness includes checks for portrait and landscape modes on mobile/tablet.",
+    "Accessibility checks should include visual verification of focus states, contrast, and label presence in the DOM."
   ],
   "test_case_properties": {
     "id": {
       "value": "ID"
     },
-    "progress": {
-      "value": "Progress"
-    },
-    "testing_type": {
-      "value": "Testing Type"
-    },
-    "scenario_name": {
-      "value": "Scenario Name"
+    "feature": {
+      "value": "Feature"
     },
     "menu": {
       "value": "Menu"
     },
-    "priority": {
-      "value": "Priority"
+    "function": {
+      "value": "Function"
     },
-    "expected_result": {
-      "value": "Expected Result"
+    "testing_type": {
+      "value": "Type"
+    },
+    "scenario_name": {
+      "value": "Scenario Name"
     },
     "steps_to_execute": {
-      "value": "Steps to Execute"
+      "value": "Execute Steps"
     },
-    "system": {
-      "value": "System"
+    "expected_result": {
+      "value": "Expected Output"
+    },
+    "status": {
+      "value": "Status"
     },
     "automatable": {
-      "value": "Automatable"
+      "value": "Automation"
     }
   }
 }

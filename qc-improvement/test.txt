@@ -1,9 +1,0 @@
-- projects 1:
-    + file 1.txt
-    + file 2.ppt
-    + file 3.figma 
-
-- projects 2:
-    + file 1.txt
-    + file 2.ppt
-    + file 3.figma 

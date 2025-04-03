@@ -15,7 +15,11 @@ import os
 from typing import Optional, Dict, List, Any
 
 from llm_factory import LLMFactory
+from enums import Agent
+from testcase_prompt_factory import TestCasePromptFactory
 from settings import settings
+
+import pystache
 
 app = FastAPI(title="Test Case Generator API")
 
@@ -34,16 +38,17 @@ system_prompt = None
 response_format = None
 model = None
 table_heads = None
+ui_system_prompt = None
 
-class UserInput(BaseModel):
+class TestCaseGenRequest(BaseModel):
     input: str
-    response_format: object = response_format
-    model: str = "gemini-2.0-flash-lite"
+    requirements: Optional[str] = None
+    agent: str
 
 @app.on_event("startup")
 async def startup_event():
     """Initialize resources when the application starts"""
-    global client, system_prompt, response_format, model, table_heads
+    global client, system_prompt, response_format, model, table_heads, ui_system_prompt
     
     try:
         client, model = LLMFactory.create(provider='gemini')
@@ -51,7 +56,10 @@ async def startup_event():
         with open("../prompt/system_prompt.md", "r", encoding="utf-8") as f:
             system_prompt = f.read()
 
-        with open("../json/schema_v2.json", "r", encoding="utf-8") as f:
+        with open("../prompt/ui_test_case_prompt_v2.md", "r", encoding="utf-8") as f:
+            ui_system_prompt = f.read()
+
+        with open("../json/ui_testcase_schema_v2.json", "r", encoding="utf-8") as f:
             response_format = json.load(f)
 
         with open("../json/table_heads.json", "r", encoding="utf-8") as f:
@@ -77,27 +85,91 @@ async def health_check():
         return {"status": "healthy", "message": completion.choices[0].message.content}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Health check failed: {str(e)}")
+    
+def create_knowledge_base(path: str):
+
+    # create data to render in mustache
+    with open(os.path.join(path, "requirements.md"), "r", encoding="utf-8") as f:
+        requirements = f.read()
+    with open(os.path.join(path, "story-board.md"), "r", encoding="utf-8") as f:
+        ui_story_board = f.read()
+    with open(os.path.join(path, "widget.json"), "r", encoding="utf-8") as f:
+        widget = json.load(f)
+    with open(os.path.join(path, "common_rules.md"), "r", encoding="utf-8") as f:
+        common_rules = f.read()
+
+    knowledge = f"""
+    ## Common rules: {common_rules},
+    ## Requirements: {requirements}, 
+    ## UI story board: {ui_story_board}
+    ## Figma design{ widget}
+"""
+
+    data = {
+        "knowledge_base": knowledge,
+        "response_format": response_format,
+    }
+    with open("../test-template/prompt.mustache", "r", encoding="utf-8") as f:
+        prompt_template = f.read()
+    output = pystache.render(prompt_template, data)
+
+    with open("../json/knowledge_base.md", "w", encoding="utf-8") as f:
+        f.write(output)
+    return output
+
+
+def create_user_request(path: str, user_request: str):
+    # read a directory and return a list of files with these names:
+    # - requirements.md
+    # - story-board.md
+    # - widget.json
+    # - common_rules.md
+
+    with open(os.path.join(path, "requirements.md"), "r", encoding="utf-8") as f:
+        requirements = f.read()
+    with open(os.path.join(path, "story-board.md"), "r", encoding="utf-8") as f:
+        ui_story_board = f.read()
+    with open(os.path.join(path, "widget.json"), "r", encoding="utf-8") as f:
+        widget = json.load(f)
+    with open(os.path.join(path, "common_rules.md"), "r", encoding="utf-8") as f:
+        common_rules = f.read()
+    
+        return f"""
+    Based on some common rules and the project knowledge bases please generate test cases for the following user request: {user_request}:
+    ## Common rules: {common_rules},
+    ## Requirements: {requirements}, 
+    ## UI story board: {ui_story_board}
+    ## Figma design{ widget}
+"""
 
 @app.post("/generate")
-async def generate_test_case(user_request: UserInput = Body(...)):
+async def generate_test_case(user_request: TestCaseGenRequest = Body(...)):
     """Generate test cases based on user input"""
     try:
         # Check if initialization was successful
         if client is None or model is None:
             raise HTTPException(status_code=500, detail="API not properly initialized")
         
+        # Detect which agent to use
+        sys_prompt = TestCasePromptFactory.load_template(user_request.agent, user_request.requirements)
+
         # Generate completion
         completion = client.chat.completions.create(
-            model=user_request.model if user_request.model else model,
+            model = model,
             messages=[
-                {"role": "developer", "content": system_prompt},
+                {"role": "developer", "content": sys_prompt},
                 {"role": "user", "content": user_request.input}
             ],
-            response_format=user_request.response_format if user_request.response_format else response_format
+            response_format=response_format,
+            temperature=0.7,
         )
+        # Save the completion generate to a file
+        with open("../json/request.txt", "w", encoding="utf-8") as f:
+            f.write(f"system_prompt: {ui_system_prompt}\n")
         
         # Process and save output
         output = json.loads(completion.choices[0].message.content)
+        # Add table heads to the output 
         output["test_case_properties"] = table_heads
         
         os.makedirs("../json", exist_ok=True)
@@ -108,11 +180,14 @@ async def generate_test_case(user_request: UserInput = Body(...)):
         return {
             "model_used": completion.model,
             "tokens_used": completion.usage.total_tokens,
+            "prompt_tokens": completion.usage.prompt_tokens,
+            "completion_tokens": completion.usage.completion_tokens,
             "result": output
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error generating test case: {str(e)}")
 
+# def create_full_output()
 
 class ExportRequest(BaseModel):
     data: Dict[str, Any]
@@ -125,20 +200,37 @@ async def export_to_excel(request: ExportRequest = Body(...)):
     data = request.model_dump().get("data", {})
     head_data = data.get("test_case_properties", {})
     user_stories = data.get("user_stories", [])
+    # Define the desired order of columns
+    column_order = [
+        "id", 
+        "scenario_name", 
+        "steps_to_execute", 
+        "expected_result", 
+        "menu", 
+        "priority", 
+        "automatable"
+    ]
+    
+    # Process test cases
     row_data = []
     for story in user_stories:
         if "test_cases" in story:
-            row_data.extend(story["test_cases"])
+            for test_case in story["test_cases"]:
+                # Convert steps_to_execute array to string if needed
+                if isinstance(test_case.get("steps_to_execute"), list):
+                    test_case["steps_to_execute"] = "\n".join(test_case["steps_to_execute"])
+                
+                # Create ordered test case dict
+                ordered_test_case = {field: test_case.get(field, "") for field in column_order}
+                row_data.append(ordered_test_case)
 
-    heads = {key: head_data[key]["value"] 
-                   for key in head_data}
-    
-    df = pd.DataFrame(data=row_data )
+    # Create DataFrame with ordered columns
+    df = pd.DataFrame(data=row_data, columns=column_order)
     
     return StreamingResponse(
         iter([df.to_csv(index=False)]),
         media_type="text/csv",
-        headers={"Content-Disposition": f"attachment; filename=data.csv"}
+        headers={f"Content-Disposition": f"attachment; filename={filename}.csv"}
     )
 
 if __name__ == "__main__":

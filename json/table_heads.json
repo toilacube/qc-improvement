@@ -2,33 +2,31 @@
   "id": {
     "value": "ID"
   },
-  "progress": {
-    "value": "Progress"
-  },
-
-  "testing_type": {
-    "value": "Testing Type"
-  },
-  "scenario_name": {
-    "value": "Scenario Name"
+  "feature": {
+    "value": "Feature"
   },
   "menu": {
     "value": "Menu"
   },
-  "priority": {
-    "value": "Priority"
+  "function":{
+    "value": "Function"
   },
-
-  "expected_result": {
-    "value": "Expected Result"
+  "testing_type": {
+    "value": "Type"
+  },
+  "scenario_name": {
+    "value": "Scenario Name"
   },
   "steps_to_execute": {
-    "value": "Steps to Execute"
+    "value": "Execute Steps"
   },
-  "system": {
-    "value": "System"
+  "expected_result": {
+    "value": "Expected Output"
+  },
+  "status": {
+    "value": "Status"
   },
   "automatable": {
-    "value": "Automatable"
+    "value": "Automation"
   }
 }

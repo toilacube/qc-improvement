@@ -1,0 +1,97 @@
+{
+  "type": "json_schema",
+  "json_schema": {
+    "name": "test_case_response",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "user_stories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "test_cases": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "feature": {
+                      "type": "string",
+                      "description": "The feature name, in order to group the test cases"
+                    },
+                    "mennu": {
+                      "type": "string",
+                      "description": "The menu name of the screen or UI of the test case"
+                    },
+                    "function": {
+                      "type": "string",
+                      "description": "The function name of the test case, example: create user, edit user, delete user"
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "The type of the test case, example: UI, FUNCTIONAL "
+                    },
+                    "scenario_name": {
+                      "type": "string"
+                    },
+                    "steps_to_execute": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "description": "Steps to execute the test case, start with number and ends with a new line. For example: 1. Open the application\n2. Click on the login button\n3. Enter username and password\n4. Click on submit button"
+                      }
+                    },
+                    "expected_result": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "The status of the test case, default is TO DO"
+                    },
+                    "automation": {
+                      "type": "string",
+                      "description": "Check if this test case is automatable or not"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "feature",
+                    "mennu",
+                    "function",
+                    "type",
+                    "scenario_name",
+                    "steps_to_execute",
+                    "expected_result",
+                    "status",
+                    "automation"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": ["title", "description", "test_cases"]
+          }
+        },
+        "key_considerations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["user_stories", "key_considerations"],
+      "additionalProperties": false
+    },
+    "strict": true
+  }
+}

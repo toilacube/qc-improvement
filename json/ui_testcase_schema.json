@@ -1,0 +1,85 @@
+{
+    "type": "json_schema",
+    "json_schema": {
+      "name": "test_case_response",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "user_stories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "test_cases": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "scenario_name": {
+                        "type": "string"
+                      },
+                      "steps_to_execute": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "description": "Steps to execute the test case, start with number and ends with a new line. For example: 1. Open the application\n2. Click on the login button\n3. Enter username and password\n4. Click on submit button"
+                        }
+                      },
+                      "expected_result": {
+                        "type": "string"
+                      },
+                      "screen": {
+                        "type": "string"
+                      },
+
+                      "priority": {
+                        "type": "string"
+                      },
+                  
+                      "automatable": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "id",
+                      "scenario_name",
+                      "steps_to_execute",
+                      "expected_result",
+                      "screen",
+                      "priority",
+                      "automatable"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "required": ["title", "description", "test_cases"]
+            }
+          },
+          "key_considerations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reasoning_steps":{
+            "type": "string"
+          }
+        },
+        "required": ["user_stories", "key_considerations"],
+        "additionalProperties": false
+      },
+      "strict": true
+    }
+  }
+  
